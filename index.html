@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="referrer" content="no-referrer" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WX HUB · 万圣节特辑 · 最丝滑 Roblox 付费脚本 · 在线体验</title>
+<style>
+:root{
+  --background:0 0% 0%;
+  --foreground:0 0% 98%;
+  --primary:25 95% 55%;
+  --border:0 0% 12%;
+  --muted-foreground:0 0% 63.9%;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;border:0 solid hsl(var(--border))}
+html{line-height:1.5;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;scroll-behavior:smooth}
+body{background:#000;color:hsl(var(--foreground));overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;background:none}
+svg{display:block}
+::selection{background:hsla(var(--primary),.3)}
+#audio-debug{display:none}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse at 50% -10%,rgba(249,115,22,.12),transparent 55%),
+             radial-gradient(ellipse at 50% 110%,rgba(132,204,22,.07),transparent 55%)}
+.bg-glow{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.blob{position:absolute;border-radius:50%;will-change:transform}
+.blob-1{width:46rem;height:46rem;top:-14rem;left:50%;margin-left:-36rem;
+  background:radial-gradient(circle,rgba(249,115,22,.18) 0%,rgba(249,115,22,.06) 45%,transparent 70%);
+  filter:blur(60px);animation:drift1 24s ease-in-out infinite alternate}
+.blob-2{width:34rem;height:34rem;top:34%;right:-14rem;
+  background:radial-gradient(circle,rgba(132,204,22,.11) 0%,transparent 65%);
+  filter:blur(70px);animation:drift2 30s ease-in-out infinite alternate}
+.blob-3{width:30rem;height:30rem;bottom:-10rem;left:-12rem;
+  background:radial-gradient(circle,rgba(147,51,234,.13) 0%,transparent 65%);
+  filter:blur(70px);animation:drift3 36s ease-in-out infinite alternate}
+.blob-4{width:36rem;height:36rem;top:115%;left:30%;
+  background:radial-gradient(circle,rgba(249,115,22,.08) 0%,transparent 65%);
+  filter:blur(80px);animation:drift1 40s ease-in-out infinite alternate-reverse}
+@keyframes drift1{from{transform:translate(0,0) scale(1)}to{transform:translate(4rem,3rem) scale(1.08)}}
+@keyframes drift2{from{transform:translate(0,0) scale(1)}to{transform:translate(-3rem,-4rem) scale(1.05)}}
+@keyframes drift3{from{transform:translate(0,0) scale(1.05)}to{transform:translate(3rem,-2rem) scale(1)}}
+#bg-canvas{position:fixed;inset:0;z-index:0;opacity:.55;pointer-events:none}
+.hx-moon{position:fixed;top:7rem;right:5vw;width:13rem;height:13rem;border-radius:50%;z-index:0;pointer-events:none;
+  background:radial-gradient(circle at 34% 30%,#ffe0b8,#fb923c 42%,#c2410c 74%,#7c2d12 100%);
+  box-shadow:0 0 80px rgba(249,115,22,.45),0 0 180px rgba(249,115,22,.22);
+  opacity:.5}
+.hx-moon::after{content:"";position:absolute;inset:0;border-radius:50%;
+  background:radial-gradient(circle at 62% 68%,rgba(0,0,0,.28) 0 12%,transparent 13%),
+             radial-gradient(circle at 30% 62%,rgba(0,0,0,.2) 0 9%,transparent 10%),
+             radial-gradient(circle at 68% 26%,rgba(0,0,0,.16) 0 7%,transparent 8%)}
+#halloween-fx{position:fixed;inset:0;z-index:95;pointer-events:none;overflow:hidden}
+.bat{position:absolute;left:-22vw;color:#120b04;animation:batDrift 48s linear infinite;will-change:transform}
+.bat svg{display:block;width:100%;height:auto;fill:currentColor;
+  filter:drop-shadow(0 0 10px rgba(249,115,22,.5));animation:batBob 4s ease-in-out infinite}
+@keyframes batDrift{from{transform:translateX(0)}to{transform:translateX(145vw)}}
+@keyframes batBob{0%,100%{transform:translateY(0) scaleY(1) rotate(0deg)}50%{transform:translateY(-16px) scaleY(.84) rotate(-3deg)}}
+.bat-1{top:14%;width:2.6rem;animation-duration:52s;animation-delay:-8s}
+.bat-1 svg{animation-duration:4.2s}
+.bat-2{top:38%;width:1.8rem;animation-duration:40s;animation-delay:-22s}
+.bat-2 svg{animation-duration:3.1s}
+.bat-3{top:68%;width:3.2rem;animation-duration:64s;animation-delay:-34s}
+.bat-3 svg{animation-duration:5.4s}
+.bat-4{top:86%;width:1.6rem;animation-duration:46s;animation-delay:-14s}
+.bat-4 svg{animation-duration:3.6s}
+.ghost{position:absolute;left:-14vw;color:rgba(233,255,214,.16);animation:ghostDrift 70s linear infinite;will-change:transform}
+.ghost svg{display:block;width:100%;height:auto;animation:ghostFloat 6s ease-in-out infinite;
+  filter:drop-shadow(0 0 22px rgba(163,230,53,.35))}
+@keyframes ghostDrift{from{transform:translateX(0)}to{transform:translateX(130vw)}}
+@keyframes ghostFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-26px) rotate(2deg)}}
+.ghost-1{top:24%;width:4.5rem;animation-duration:78s;animation-delay:-12s}
+.ghost-1 svg{animation-duration:7s}
+.ghost-2{top:74%;width:3.2rem;animation-duration:92s;animation-delay:-46s}
+.ghost-2 svg{animation-duration:5.5s}
+.cobweb{position:fixed;z-index:94;width:10rem;height:10rem;color:rgba(249,115,22,.22);pointer-events:none}
+.cobweb-l{top:4rem;left:0}
+.cobweb-r{top:4rem;right:0;transform:scaleX(-1)}
+.notice-bar{position:fixed;top:4rem;left:0;right:0;height:2.5rem;z-index:110;display:flex;align-items:center;overflow:hidden;
+  background:var(--nb-bg, rgba(249,115,22,.45));
+  border-bottom:1px solid var(--nb-border, rgba(253,186,116,.35));
+  box-shadow:0 4px 20px var(--nb-shadow, rgba(249,115,22,.2));
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  transition:background .35s ease,border-color .35s ease,box-shadow .35s ease}
+.notice-viewport{position:absolute;inset:0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,transparent 40px,#000 110px,#000 calc(100% - 210px),transparent calc(100% - 150px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,transparent 40px,#000 110px,#000 calc(100% - 210px),transparent calc(100% - 150px),transparent 100%)}
+.notice-track{position:absolute;left:0;top:50%;transform:translate(100vw,-50%);white-space:nowrap;display:inline-flex;align-items:center;color:#fff;font-size:.85rem;font-weight:700;letter-spacing:.02em;text-shadow:0 1px 6px rgba(0,0,0,.45);will-change:transform,filter,opacity;z-index:1;transition:opacity .3s ease,filter .3s ease}
+.notice-track:hover{animation-play-state:paused}
+.notice-track.fading{opacity:0;filter:blur(10px)}
+.notice-guard{position:absolute;top:0;bottom:0;z-index:3;display:flex;align-items:center}
+.notice-guard-l{left:0;padding:0 1.8rem 0 .55rem;pointer-events:none}
+.notice-guard-r{right:0;gap:.15rem;padding:0 .5rem 0 2.6rem}
+.notice-ico{width:1.4rem;height:1.4rem;border-radius:50%;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.55);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 12px rgba(255,255,255,.35)}
+.notice-ico svg{width:.85rem;height:.85rem}
+.notice-arrow{width:1.5rem;height:1.5rem;padding:0;color:rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;border:0;background:none;transition:color .15s,transform .12s,background .15s;-webkit-tap-highlight-color:transparent;touch-action:manipulation;flex-shrink:0;border-radius:50%}
+.notice-arrow svg{width:.8rem;height:.8rem;display:block;pointer-events:none}
+@media(hover:hover){.notice-arrow:hover{color:#fff;transform:scale(1.15)}}
+.notice-arrow:active{transform:scale(.8);color:#fff}
+.notice-close{margin-left:.2rem;color:rgba(255,255,255,.75);width:1.6rem;height:1.6rem;border:1px solid rgba(255,255,255,.28)}
+.notice-close svg{width:.7rem;height:.7rem}
+@media(hover:hover){.notice-close:hover{color:#fff;background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.55);transform:scale(1.08)}}
+.notice-idx{font-size:.7rem;color:var(--nb-idx, #ffedd5);font-weight:700;min-width:2.4rem;text-align:center;font-family:ui-monospace,monospace;letter-spacing:.05em;text-shadow:0 1px 4px rgba(0,0,0,.6);transition:color .35s ease}
+@keyframes noticeRoll{from{transform:translate(100vw,-50%)}to{transform:translate(-100%,-50%)}}
+nav{position:fixed;top:0;left:0;right:0;z-index:120;border-bottom:1px solid hsl(var(--border));background:rgba(0,0,0,.82);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+.nav-inner{max-width:80rem;margin:0 auto;padding:0 1rem;height:4rem;display:flex;align-items:center;justify-content:space-between}
+.nav-left{display:flex;align-items:center;gap:2rem}
+.logo{font-weight:700;font-size:1.25rem;letter-spacing:-.05em;color:#fff;margin-right:.5rem;display:inline-flex;align-items:center;gap:.4rem}
+.logo .accent{color:hsl(var(--primary))}
+.logo-pumpkin{font-size:1.05em;line-height:1;filter:drop-shadow(0 0 10px rgba(249,115,22,.8));animation:pumpkinBounce 3.4s ease-in-out infinite}
+@keyframes pumpkinBounce{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-3px) rotate(5deg)}}
+.nav-links{display:flex;align-items:center;gap:.25rem}
+.nav-links a{display:flex;align-items:center;gap:.4rem;font-size:.875rem;font-weight:500;padding:.4rem .8rem;border-radius:9999px;color:#a1a1aa;transition:.15s}
+.nav-links a svg{width:1rem;height:1rem}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.05)}
+.nav-links a.active{color:#fff;background:rgba(249,115,22,.16)}
+.nav-links a.premium{color:#fdba74;font-weight:600}
+.nav-links a.premium:hover{background:rgba(249,115,22,.12);color:#fed7aa}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.btn-login{display:flex;align-items:center;gap:.5rem;padding:.5rem 1rem;background:#f97316;color:#170b00;font-size:.875rem;font-weight:700;border-radius:9999px;transition:.15s;box-shadow:0 6px 20px rgba(249,115,22,.28)}
+.btn-login:hover{background:#fb923c}
+.btn-login svg{width:1rem;height:1rem}
+#menu-btn{display:none;color:#a1a1aa;padding:.5rem;border-radius:.5rem}
+#menu-btn:hover{color:#fff;background:rgba(255,255,255,.05)}
+#mobile-menu{display:none;flex-direction:column;gap:.25rem;padding:.75rem 1rem 1rem;border-top:1px solid hsl(var(--border));background:rgba(0,0,0,.95)}
+#mobile-menu a{padding:.5rem .75rem;border-radius:.5rem;color:#d4d4d8;font-size:.9rem}
+#mobile-menu a:hover{background:rgba(249,115,22,.12);color:#fff}
+main{position:relative;flex:1;padding-top:6.5rem;min-height:100vh;display:flex;flex-direction:column;align-items:center;transition:padding-top .25s ease}
+.hero{padding-top:8rem;padding-bottom:2rem;text-align:center;max-width:56rem;margin:0 auto;padding-left:1rem;padding-right:1rem;position:relative;z-index:10}
+.hero h1{font-size:clamp(2.25rem,7vw,4.5rem);font-weight:700;color:#fff;letter-spacing:-.025em;line-height:1.1;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.75rem;margin-bottom:1.5rem;text-shadow:0 0 48px rgba(249,115,22,.35)}
+.h1-pumpkin{font-size:.78em;line-height:1;filter:drop-shadow(0 0 20px rgba(249,115,22,.85));animation:pumpkinBounce 3.4s ease-in-out infinite}
+.word-badge{display:inline-grid;place-items:center;background:#ea580c;color:#fff;padding:.15rem .9rem;border-radius:1rem;overflow:hidden;box-shadow:0 0 32px rgba(249,115,22,.45)}
+.word-badge .rot{grid-area:1/1;display:inline-flex}
+.rot span{display:inline-block}
+@keyframes rollIn{from{transform:translateY(110%);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes rollOut{from{transform:translateY(0);opacity:1}to{transform:translateY(-110%);opacity:0}}
+.hero p{color:#a1a1aa;font-size:clamp(1rem,2.5vw,1.25rem);max-width:42rem;margin:0 auto;line-height:1.75}
+.price-tag{display:inline-flex;align-items:center;gap:.6rem;margin-top:1.5rem;background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.4);border-radius:9999px;padding:.5rem 1.5rem;flex-wrap:wrap;justify-content:center}
+.price-tag .yuan{font-size:.875rem;color:#fdba74;font-weight:600}
+.price-tag .num{font-size:1.5rem;font-weight:900;color:#fff;letter-spacing:-.02em}
+.price-tag .sep{width:1px;height:1.2rem;background:#3f3f46}
+.price-tag .sub{font-size:.8rem;color:#a1a1aa}
+.bypass-wrap{width:100%;max-width:42rem;margin:0 auto;position:relative;z-index:20;padding:0 1rem}
+.demo-card{position:relative;background:rgba(12,8,4,.88);border:1px solid #3b2a17;border-radius:1.25rem;padding:1.25rem;box-shadow:0 25px 50px -12px rgba(0,0,0,.6),0 0 40px rgba(249,115,22,.08)}
+.demo-card::before{content:"";position:absolute;inset:-1px;border-radius:1.3rem;padding:1px;background:linear-gradient(120deg,rgba(249,115,22,.6),transparent 40%,transparent 60%,rgba(163,230,53,.55));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.demo-title{display:flex;align-items:center;gap:.5rem;font-size:.8rem;font-weight:700;color:#fdba74;margin-bottom:.75rem;letter-spacing:.08em}
+.demo-title svg{width:.875rem;height:.875rem}
+.demo-row{display:flex;gap:.5rem}
+.demo-row input{flex:1;background:rgba(26,18,10,.85);border:1px solid #4a3520;border-radius:.75rem;outline:0;padding:.8rem 1rem;font-size:.95rem;color:#fff;min-width:0;transition:border-color .15s}
+.demo-row input:focus{border-color:rgba(249,115,22,.7);box-shadow:0 0 0 3px rgba(249,115,22,.12)}
+.demo-row input::placeholder{color:#5c4a35}
+.btn-demo{flex-shrink:0;display:flex;align-items:center;gap:.4rem;padding:.8rem 1.25rem;background:#ea580c;color:#fff;font-weight:700;font-size:.9rem;border-radius:.75rem;box-shadow:0 10px 20px -6px rgba(249,115,22,.45);transition:.15s;white-space:nowrap}
+.btn-demo:hover{background:#f97316}
+.btn-demo:active{transform:scale(.95)}
+.btn-demo svg{width:.9rem;height:.9rem}
+.demo-hint{margin-top:.75rem;font-size:.75rem;color:#7a6a55;display:flex;align-items:center;gap:.375rem}
+.demo-hint svg{width:.75rem;height:.75rem;color:#a3e635;flex-shrink:0}
+.demo-card.shake{animation:shake .4s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.stats{max-width:64rem;width:100%;margin-top:4rem;padding:0 1rem;position:relative;z-index:10}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:.75rem}
+.stat-card{position:relative;overflow:hidden;border-radius:1rem;border:1px solid rgba(59,42,23,.95);background:rgba(12,8,4,.78);padding:1.25rem;backdrop-filter:blur(4px);transition:border-color .15s}
+.stat-card::before{content:"";position:absolute;left:2rem;right:2rem;top:0;height:1px;background:rgba(253,186,116,.4);opacity:0;transition:opacity .2s}
+.stat-card:hover{border-color:#6b4a25}
+.stat-card:hover::before{opacity:1}
+.stat-num{display:block;font-size:clamp(1.5rem,3.5vw,2.25rem);font-weight:900;color:#fff;letter-spacing:-.025em;text-shadow:0 0 24px rgba(249,115,22,.35)}
+.stat-label{margin-top:.5rem;display:block;font-size:.75rem;text-transform:uppercase;letter-spacing:.16em;color:#7a6a55;font-weight:600}
+.social-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+.social-card{display:flex;align-items:center;gap:1rem;background:rgba(12,8,4,.78);border:1px solid #3b2a17;border-radius:1rem;padding:1rem;transition:.15s}
+.social-card:hover{background:rgba(26,18,10,.85);border-color:rgba(249,115,22,.45)}
+.social-icon{width:2.75rem;height:2.75rem;border-radius:.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid}
+.social-icon svg{width:1.25rem;height:1.25rem}
+.si-qq{background:rgba(249,115,22,.15);border-color:rgba(249,115,22,.4);color:#fb923c}
+.si-plain{background:#1a1208;border-color:#4a3520;color:#e7d8c2}
+.social-card p.t{font-size:.875rem;font-weight:600;color:#fff}
+.social-card p.s{font-size:.75rem;color:#7a6a55;margin-top:.125rem}
+.chip{margin-left:auto;flex-shrink:0;display:flex;align-items:center;gap:.375rem;font-size:.75rem;font-weight:600;color:#e7d8c2;border:1px solid #4a3520;padding:.375rem .75rem;border-radius:.5rem;transition:.15s}
+.chip svg{width:.75rem;height:.75rem}
+.section{max-width:56rem;width:100%;margin-top:6rem;padding:0 1rem;position:relative;z-index:10;scroll-margin-top:5rem}
+.section-title{text-align:center;margin-bottom:2.5rem}
+.section-title h2{font-size:clamp(1.5rem,4vw,1.875rem);font-weight:700;color:#fff;margin-bottom:.5rem}
+.section-title p{color:#7a6a55;font-size:.875rem}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;position:relative}
+.step{background:rgba(12,8,4,.65);border:1px solid #3b2a17;border-radius:1rem;padding:1.5rem;display:flex;flex-direction:column;gap:1.25rem;backdrop-filter:blur(4px);transition:border-color .15s}
+.step:hover{border-color:rgba(249,115,22,.45)}
+.step-num{font-size:.75rem;font-weight:600;letter-spacing:.22em;color:#fdba74}
+.step h3{font-weight:700;color:#fff;font-size:1rem}
+.step p{color:#a1a1aa;font-size:.875rem;line-height:1.625}
+.svc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem}
+.svc{display:flex;align-items:center;justify-content:center;background:rgba(12,8,4,.65);border:1px solid #3b2a17;border-radius:.75rem;padding:1rem .5rem;transition:.15s;min-height:3.25rem}
+.svc span{color:#8a7a65;font-size:.75rem;font-weight:500;text-align:center;transition:color .15s;line-height:1.4}
+.svc:hover{border-color:rgba(249,115,22,.5);background:#1a1208}
+.svc:hover span{color:#e7d8c2}
+.svc-grid .svc.extra{display:none}
+.svc-grid.expanded .svc.extra{display:flex}
+.more-btn{display:flex;align-items:center;justify-content:center;gap:.375rem;margin:1.5rem auto 0;color:#7a6a55;font-size:.875rem;font-weight:500;transition:color .15s;padding:.5rem 1rem;border:1px solid #3b2a17;border-radius:9999px;background:rgba(12,8,4,.65)}
+.more-btn:hover{color:#fdba74;border-color:rgba(249,115,22,.45)}
+.feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem}
+.feat{display:flex;gap:1rem;background:rgba(12,8,4,.65);border:1px solid #3b2a17;border-radius:1rem;padding:1.5rem;transition:border-color .15s}
+.feat:hover{border-color:rgba(249,115,22,.45)}
+.feat-icon{width:2.5rem;height:2.5rem;border-radius:.75rem;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(249,115,22,.13);border:1px solid rgba(249,115,22,.32);color:#fdba74}
+.feat-icon svg{width:1.25rem;height:1.25rem}
+.feat h3{font-size:.875rem;font-weight:700;color:#fff;margin-bottom:.375rem}
+.feat p{color:#7a6a55;font-size:.875rem;line-height:1.625}
+.table-shell{overflow-x:auto;border-radius:1rem;border:1px solid #3b2a17}
+table{width:100%;border-collapse:collapse;font-size:.875rem}
+thead th{background:rgba(26,18,10,.85);border-bottom:1px solid #3b2a17;padding:1rem 1.25rem;text-align:center;white-space:nowrap}
+thead th:first-child{text-align:left;color:#a1a1aa;font-weight:600}
+thead th.hl{color:#fdba74;font-weight:700}
+thead th.dim{color:#a1a1aa;font-weight:600}
+tbody td{padding:.75rem 1.25rem;border-bottom:1px solid rgba(59,42,23,.6);text-align:center}
+tbody td:first-child{text-align:left;color:#e7d8c2;font-weight:500}
+tbody tr:nth-child(odd){background:rgba(26,18,10,.32)}
+tbody tr:last-child td{border-bottom:0}
+.ic{width:1.25rem;height:1.25rem;margin:0 auto}
+.ic-ok{color:#a3e635}
+.ic-no{color:#5c4a35}
+.ic-part{color:#a1a1aa;font-size:11px;font-weight:500}
+.testi-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-bottom:2rem}
+.testi-head h2{font-size:clamp(1.5rem,4vw,1.875rem);font-weight:700;color:#fff;margin-bottom:.5rem}
+.testi-head p{color:#7a6a55;font-size:.875rem}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.testi{display:flex;flex-direction:column;gap:1rem;background:rgba(12,8,4,.72);border:1px solid rgba(59,42,23,.85);border-radius:1rem;padding:1.25rem;box-shadow:0 20px 25px -5px rgba(0,0,0,.25)}
+.testi q{flex:1;color:#e7d8c2;font-size:.875rem;line-height:1.75;quotes:none}
+.testi-foot{display:flex;align-items:center;justify-content:space-between;gap:.75rem;border-top:1px solid rgba(59,42,23,.7);padding-top:1rem}
+.testi-user{display:flex;align-items:center;gap:.625rem;min-width:0}
+.avatar{width:2rem;height:2rem;border-radius:50%;background:#1a1208;border:1px solid #4a3520;display:flex;align-items:center;justify-content:center;color:#f2e6d4;font-size:.75rem;font-weight:700;flex-shrink:0}
+.testi-user .n{font-size:.75rem;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.testi-user .r{font-size:10px;color:#5c4a35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stars{display:flex;gap:1px}
+.stars svg{width:.75rem;height:.75rem;color:#fbbf24}
+.faq-list{display:flex;flex-direction:column;gap:.75rem}
+details{border:1px solid #3b2a17;border-radius:.75rem;background:rgba(26,18,10,.55);backdrop-filter:blur(4px);overflow:hidden}
+summary{list-style:none;cursor:pointer;width:100%;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;font-weight:600;color:#f4f4f5;transition:.15s}
+summary::-webkit-details-marker{display:none}
+summary:hover{background:rgba(59,42,23,.5)}
+summary .chev{width:1.25rem;height:1.25rem;color:#7a6a55;transition:transform .2s;flex-shrink:0}
+details[open] summary .chev{transform:rotate(180deg);color:#fdba74}
+.faq-body{padding:0 1.5rem 1.25rem;color:#a1a1aa;font-size:.875rem;line-height:1.75}
+.cta-card{position:relative;background:rgba(26,18,10,.65);border:1px solid #3b2a17;border-radius:1.5rem;padding:3rem;overflow:hidden}
+.cta-card::before{content:"";position:absolute;top:-8rem;right:-8rem;width:20rem;height:20rem;background:rgba(249,115,22,.18);filter:blur(100px);border-radius:50%;pointer-events:none}
+.cta-card::after{content:"";position:absolute;bottom:-5rem;left:-5rem;width:15rem;height:15rem;background:rgba(132,204,22,.1);filter:blur(80px);border-radius:50%;pointer-events:none}
+.cta-inner{position:relative;z-index:10;display:flex;flex-direction:column;gap:2.5rem;align-items:center;text-align:center}
+.cta-inner h2{font-size:clamp(1.5rem,4vw,2.25rem);font-weight:700;color:#fff}
+.cta-inner h2 .hl{color:#a3e635}
+.cta-inner p{color:#a1a1aa;margin-top:1rem;max-width:36rem;line-height:1.75}
+.cta-price{display:flex;align-items:baseline;gap:.6rem;margin-top:1.25rem;justify-content:center;flex-wrap:wrap}
+.cta-price .yuan{color:#fdba74;font-weight:700}
+.cta-price .num{font-size:2.5rem;font-weight:900;color:#fff;letter-spacing:-.02em}
+.cta-price .old{color:#5c4a35;text-decoration:line-through;font-size:1rem}
+.price-cards{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center;margin-top:1.25rem}
+.price-card{background:rgba(12,8,4,.75);border:1px solid #4a3520;border-radius:1rem;padding:1rem 1.5rem;text-align:center;min-width:10rem}
+.price-card.hot{border-color:rgba(249,115,22,.65);box-shadow:0 0 28px rgba(249,115,22,.2)}
+.price-card .pc-name{font-size:.75rem;color:#a1a1aa;font-weight:600}
+.price-card .pc-price{font-size:1.5rem;font-weight:900;color:#fff;margin-top:.25rem}
+.price-card .pc-desc{font-size:.7rem;color:#7a6a55;margin-top:.25rem}
+.btn-row{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center}
+.btn-primary{display:inline-flex;align-items:center;gap:.625rem;height:3rem;padding:0 1.75rem;background:#ea580c;color:#fff;font-weight:700;border-radius:.75rem;box-shadow:0 10px 22px -6px rgba(249,115,22,.5);transition:.15s}
+.btn-primary:hover{background:#f97316}
+.btn-primary:active{transform:scale(.95)}
+.btn-primary svg{width:1rem;height:1rem}
+.btn-ghost{display:inline-flex;align-items:center;gap:.625rem;height:3rem;padding:0 1.5rem;background:rgba(59,42,23,.8);color:#f2e6d4;font-weight:600;border-radius:.75rem;border:1px solid #4a3520;transition:.15s}
+.btn-ghost:hover{background:rgba(80,58,32,.85);border-color:#7a6a55;color:#fff}
+.btn-ghost svg{width:1rem;height:1rem;color:#a1a1aa;transition:color .15s}
+.btn-ghost:hover svg{color:#fdba74}
+footer{position:relative;z-index:50;border-top:1px solid #3b2a17;padding:3rem 0 2rem;background:#000;margin-top:auto}
+.footer-inner{max-width:80rem;margin:0 auto;padding:0 1rem}
+.footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-bottom:2rem}
+.footer-brand p{color:#a1a1aa;font-size:.875rem;margin-top:1rem;white-space:pre-line;line-height:1.6}
+.footer-social{display:flex;gap:.75rem;margin-top:1.25rem}
+.footer-social a{width:2rem;height:2rem;border-radius:.5rem;display:flex;align-items:center;justify-content:center;transition:.15s;border:1px solid transparent}
+.footer-social a svg{width:1rem;height:1rem}
+.footer-col h2{color:#fff;font-weight:600;margin-bottom:1rem;font-size:1rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.footer-col a{color:#a1a1aa;font-size:.875rem;transition:color .15s}
+.footer-col a:hover{color:hsl(var(--primary))}
+.footer-bottom{padding-top:2rem;border-top:1px solid #1a1208;display:flex;align-items:center;justify-content:space-between;color:#a1a1aa;font-size:.875rem;flex-wrap:wrap;gap:.5rem}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .blob{animation:none}
+  .bat,.bat svg,.ghost,.ghost svg,.logo-pumpkin,.h1-pumpkin{animation:none}
+}
+.overlay{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;background:#05030a}
+.overlay.show{display:flex}
+#intro-overlay{flex-direction:column;overflow:hidden}
+.intro-skip{position:absolute;top:1.25rem;right:1.25rem;z-index:20;font-size:.75rem;color:#7a6a55;border:1px solid #4a3520;padding:.4rem .9rem;border-radius:9999px;background:rgba(12,8,4,.6);transition:.15s}
+.intro-skip:hover{color:#fff;border-color:#7a6a55}
+.intro-logo{display:flex;gap:.1em;font-size:clamp(3rem,10vw,5.5rem);font-weight:900;letter-spacing:.02em;font-family:ui-sans-serif,system-ui,sans-serif}
+.intro-logo span{display:inline-block;opacity:0;transform:translateY(60px);background:linear-gradient(90deg,#ff6b00,#ffb347,#a3e635,#65a30d,#a855f7,#ff6b00);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:letterIn .6s cubic-bezier(.22,1,.36,1) forwards,gradMove 3s linear infinite}
+@keyframes letterIn{to{opacity:1;transform:translateY(0)}}
+@keyframes gradMove{to{background-position:300% 0}}
+.intro-sub{margin-top:1.5rem;font-size:clamp(1rem,3vw,1.4rem);font-weight:700;color:#fdba74;min-height:1.6em;letter-spacing:.05em;text-shadow:0 0 24px rgba(249,115,22,.4)}
+.intro-badge{margin-top:1rem;font-size:.9rem;font-weight:900;color:#a3e635;letter-spacing:.3em;opacity:0;transform:rotate(-6deg);text-shadow:0 0 18px rgba(163,230,53,.5)}
+.intro-greet{margin-top:2rem;width:min(90vw,42rem);display:grid;grid-template-columns:1fr 1fr;gap:.5rem 2rem}
+.intro-greet p{font-size:.8rem;color:#d9f99d;opacity:0;transform:translateY(10px);transition:.5s}
+.intro-greet p.l{text-align:left}
+.intro-greet p.r{text-align:right}
+.intro-bar{margin-top:2.25rem;width:min(70vw,22rem);height:.4rem;border-radius:9999px;background:#241505;overflow:hidden;opacity:0}
+.intro-bar i{display:block;height:100%;width:0;border-radius:9999px;background:linear-gradient(90deg,#ff6b00,#ffb347,#a3e635,#65a30d,#a855f7)}
+.intro-enjoy{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:clamp(1.6rem,5.5vw,3.2rem);font-weight:900;letter-spacing:.12em;text-align:center;padding:0 1rem;background:linear-gradient(90deg,#ff6b00,#ffb347,#a3e635,#65a30d,#a855f7,#ff6b00);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0;pointer-events:none;animation:gradMove 2s linear infinite}
+#loader-overlay{background:rgba(5,3,10,.93)}
+.loader-card{width:min(90vw,26rem);border-radius:1.4rem;border:1px solid rgba(249,115,22,.45);background:linear-gradient(135deg,#2a1508,#1a1208,#1f1409);padding:2rem 1.75rem;box-shadow:0 0 60px rgba(249,115,22,.25)}
+.loader-card h3{font-size:1rem;color:#fdba74;font-weight:700}
+.loader-card h2{font-size:1.4rem;color:#fb923c;font-weight:800;margin-top:.35rem}
+.loader-status{margin-top:1.25rem;font-size:.85rem;color:#fb923c;min-height:1.3em}
+.loader-bar{margin-top:.6rem;height:.55rem;border-radius:9999px;background:#241206;overflow:hidden}
+.loader-bar i{display:block;height:100%;width:0;border-radius:9999px;background:linear-gradient(90deg,#c2410c,#f97316,#ea580c);transition:width .5s ease}
+.loader-pct{margin-top:.6rem;text-align:center;font-size:.85rem;font-weight:800;color:#fb923c}
+#sim-overlay{background:rgba(0,0,0,.78);backdrop-filter:blur(6px);z-index:1001;padding:1rem}
+.sim-window{width:min(96vw,52rem);height:min(86vh,36rem);border-radius:1rem;border:1px solid rgba(249,115,22,.45);background:#0e0904;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 0 80px rgba(249,115,22,.28)}
+.sim-topbar{display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;background:rgba(42,21,8,.92);border-bottom:1px solid #3b2a17;flex-shrink:0}
+.sim-dot{width:.6rem;height:.6rem;border-radius:50%}
+.sim-title{font-size:.85rem;font-weight:800;color:#fff;letter-spacing:.05em}
+.sim-title em{font-style:normal;color:#fdba74}
+.sim-badge{margin-left:auto;font-size:.65rem;font-weight:800;color:#140b02;background:linear-gradient(90deg,#fdba74,#f97316);padding:.2rem .6rem;border-radius:9999px;letter-spacing:.1em}
+.sim-close{width:1.75rem;height:1.75rem;border-radius:.5rem;display:flex;align-items:center;justify-content:center;color:#a1a1aa;border:1px solid #4a3520;transition:.15s;flex-shrink:0}
+.sim-close:hover{color:#fff;border-color:#7a6a55}
+.sim-close svg{width:.8rem;height:.8rem}
+.sim-body{flex:1;display:flex;min-height:0}
+.sim-side{width:9.5rem;flex-shrink:0;background:rgba(26,16,6,.85);border-right:1px solid #3b2a17;padding:.75rem .5rem;display:flex;flex-direction:column;gap:.25rem}
+.sim-tab{display:flex;align-items:center;gap:.5rem;padding:.55rem .7rem;border-radius:.6rem;font-size:.8rem;font-weight:600;color:#a1a1aa;transition:.15s;text-align:left}
+.sim-tab svg{width:.85rem;height:.85rem;flex-shrink:0}
+.sim-tab:hover{color:#fff;background:rgba(255,255,255,.05)}
+.sim-tab.active{color:#fff;background:rgba(249,115,22,.18);border:1px solid rgba(249,115,22,.42)}
+.sim-content{flex:1;overflow-y:auto;padding:1rem;min-width:0}
+.sim-content::-webkit-scrollbar{width:6px}
+.sim-content::-webkit-scrollbar-thumb{background:#4a3520;border-radius:9999px}
+.sim-pane{display:none}
+.sim-pane.active{display:block}
+.sim-search{width:100%;background:rgba(26,18,10,.85);border:1px solid #4a3520;border-radius:.6rem;padding:.55rem .8rem;font-size:.8rem;color:#fff;outline:none;margin-bottom:.75rem}
+.sim-search:focus{border-color:rgba(249,115,22,.65)}
+.sim-count{font-size:.7rem;color:#7a6a55;margin-bottom:.5rem}
+.sim-game{display:flex;align-items:center;gap:.6rem;padding:.5rem .7rem;border-radius:.55rem;border:1px solid transparent;transition:.12s;cursor:pointer}
+.sim-game:hover{background:rgba(249,115,22,.08);border-color:rgba(249,115,22,.35)}
+.sim-game .gdot{width:.5rem;height:.5rem;border-radius:50%;background:#a3e635;box-shadow:0 0 6px rgba(163,230,53,.75);flex-shrink:0}
+.sim-game .gname{font-size:.8rem;color:#e7d8c2;font-weight:500}
+.sim-game .ggo{margin-left:auto;font-size:.65rem;color:#7a6a55;opacity:0;transition:.12s}
+.sim-game:hover .ggo{opacity:1;color:#fdba74}
+.sim-legend{display:flex;gap:1rem;margin-top:.75rem;font-size:.68rem;color:#7a6a55;flex-wrap:wrap}
+.sim-legend i{display:inline-block;width:.45rem;height:.45rem;border-radius:50%;margin-right:.3rem;vertical-align:middle}
+.sim-notice{display:flex;gap:.75rem;padding:.65rem .75rem;border-radius:.6rem;background:rgba(26,18,10,.55);margin-bottom:.5rem}
+.sim-notice .nd{font-size:.65rem;color:#fdba74;font-weight:700;white-space:nowrap;font-family:ui-monospace,monospace;padding-top:.1rem}
+.sim-notice .nt{font-size:.78rem;color:#e7d8c2;line-height:1.6;white-space:pre-line}
+.sim-dev{display:flex;gap:.75rem;align-items:center;background:rgba(26,18,10,.55);border:1px solid #3b2a17;border-radius:.75rem;padding:.9rem;margin-bottom:.6rem}
+.sim-dev .davatar{width:2.4rem;height:2.4rem;border-radius:.7rem;background:rgba(249,115,22,.15);border:1px solid rgba(249,115,22,.4);display:flex;align-items:center;justify-content:center;color:#fdba74;font-weight:800;flex-shrink:0}
+.sim-dev .dn{font-size:.85rem;font-weight:700;color:#fff}
+.sim-dev .dr{font-size:.68rem;color:#fdba74;font-weight:600;margin-top:.1rem}
+.sim-dev .dd{font-size:.72rem;color:#7a6a55;margin-top:.15rem}
+.sim-about p{font-size:.8rem;color:#a1a1aa;line-height:1.8;margin-bottom:.75rem}
+.sim-kbd{display:inline-block;background:#1a1208;border:1px solid #4a3520;border-radius:.35rem;padding:.05rem .4rem;font-size:.72rem;color:#f2e6d4;font-family:ui-monospace,monospace}
+#demo-toast{position:fixed;left:50%;bottom:2rem;transform:translate(-50%,150%);z-index:3600;background:rgba(42,21,8,.96);border:1px solid rgba(249,115,22,.55);color:#fff;font-size:.82rem;font-weight:600;padding:.7rem 1.25rem;border-radius:.75rem;box-shadow:0 10px 30px rgba(0,0,0,.55);transition:transform .35s cubic-bezier(.22,1,.36,1);display:flex;align-items:center;gap:.5rem;max-width:90vw}
+#demo-toast.show{transform:translate(-50%,0)}
+#demo-toast svg{width:.9rem;height:.9rem;color:#a3e635;flex-shrink:0}
+#music-player{position:fixed;right:1.25rem;bottom:1.25rem;z-index:1300;display:flex;align-items:center;gap:.6rem;background:rgba(42,21,8,.94);border:1px solid rgba(249,115,22,.5);border-radius:9999px;padding:.45rem .9rem .45rem .45rem;box-shadow:0 10px 30px rgba(0,0,0,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:border-color .2s}
+#music-player:hover{border-color:rgba(253,186,116,.8)}
+#music-disc{width:2.25rem;height:2.25rem;border-radius:50%;overflow:hidden;flex-shrink:0;border:2px solid rgba(253,186,116,.55);animation:discSpin 6s linear infinite;animation-play-state:paused}
+#music-player.playing #music-disc{animation-play-state:running}
+#music-disc img{width:100%;height:100%;object-fit:cover;display:block}
+@keyframes discSpin{to{transform:rotate(360deg)}}
+#music-info{min-width:0}
+#music-name{font-size:.72rem;font-weight:700;color:#fff;white-space:nowrap;max-width:9rem;overflow:hidden;text-overflow:ellipsis}
+#music-singer{font-size:.62rem;color:#fdba74;white-space:nowrap}
+#music-toggle{width:1.9rem;height:1.9rem;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#ea580c;color:#fff;transition:.15s;border:0}
+#music-toggle:hover{background:#f97316}
+#music-toggle svg{width:.85rem;height:.85rem}
+#apple-intro{position:fixed;inset:0;z-index:2000;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;transition:transform 1.1s cubic-bezier(.76,0,.24,1)}
+#apple-intro.done{transform:translateY(-100%)}
+#apple-intro::after{content:"";position:absolute;left:50%;top:50%;width:60rem;height:60rem;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(249,115,22,.12) 0%,transparent 60%);pointer-events:none}
+body.intro-lock{overflow:hidden}
+.ai-word{font-size:clamp(2.8rem,9vw,5.5rem);color:#fff;display:flex;padding-left:.4em;letter-spacing:.4em}
+.ai-word span{opacity:0;filter:blur(14px);transform:translateY(16px);transition:opacity 1.1s ease,filter 1.1s ease,transform 1.1s cubic-bezier(.22,1,.36,1)}
+.ai-word span.on{opacity:1;filter:blur(0);transform:none}
+.ai-tag{margin-top:1.6rem;font-size:clamp(.72rem,2vw,.95rem);color:#b3a08a;letter-spacing:.4em;padding-left:.4em;opacity:0;transform:translateY(10px);transition:opacity 1.4s ease,transform 1.4s cubic-bezier(.22,1,.36,1)}
+.ai-tag.on{opacity:1;transform:none}
+.ai-line{width:min(56vw,15rem);height:1px;background:#2a1a0c;margin-top:2.8rem;position:relative;overflow:hidden;border-radius:9999px}
+.ai-line i{position:absolute;inset:0;background:linear-gradient(90deg,transparent,#fb923c,transparent);transform:translateX(-101%)}
+.ai-line.go i{animation:aiScan 1.8s cubic-bezier(.65,0,.35,1) forwards}
+@keyframes aiScan{to{transform:translateX(101%)}}
+.ai-feats{position:relative;width:100%;height:1.6em;margin-top:1.6rem}
+.ai-feats span{position:absolute;left:0;right:0;top:0;text-align:center;font-size:clamp(.72rem,2vw,.85rem);color:#a3e635;letter-spacing:.32em;opacity:0;filter:blur(8px);transform:translateY(10px);transition:opacity .9s ease,filter .9s ease,transform .9s cubic-bezier(.22,1,.36,1);padding-left:.32em}
+.ai-feats span.on{opacity:1;filter:blur(0);transform:none}
+.ai-feats span.off{opacity:0;filter:blur(8px);transform:translateY(-10px);transition:opacity .7s ease,filter .7s ease,transform .7s ease}
+.ai-skip{position:absolute;top:1.4rem;right:1.4rem;font-size:.72rem;color:#6e6157;border:1px solid #2c241c;border-radius:9999px;padding:.45rem 1.1rem;background:rgba(20,14,8,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;transition:opacity .5s,color .2s,border-color .2s;letter-spacing:.1em}
+.ai-skip.show{opacity:1}
+.ai-skip:hover{color:#fff;border-color:#4a3a2a}
+#music-ask{position:fixed;inset:0;z-index:4000;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:opacity .45s}
+#music-ask.gone{opacity:0;pointer-events:none}
+.ask-card{width:min(90vw,22rem);background:rgba(22,14,8,.95);border:1px solid rgba(249,115,22,.5);border-radius:1.25rem;padding:1.75rem 1.5rem 1.5rem;text-align:center;box-shadow:0 30px 60px rgba(0,0,0,.65);animation:askIn .5s cubic-bezier(.22,1,.36,1)}
+@keyframes askIn{from{opacity:0;transform:translateY(16px) scale(.96)}to{opacity:1;transform:none}}
+.ask-title{font-size:1.05rem;font-weight:700;color:#fff}
+.ask-sub{margin-top:.5rem;font-size:.72rem;color:#fdba74}
+.ask-btns{margin-top:1.25rem;display:flex;gap:.6rem}
+.ask-btns button{flex:1;height:2.6rem;border-radius:.7rem;font-size:.85rem;font-weight:700;transition:.15s;border:1px solid transparent}
+#ask-yes{background:#ea580c;color:#fff}
+#ask-yes:hover{background:#f97316}
+#ask-no{background:rgba(59,42,23,.8);color:#e7d8c2;border-color:#4a3520}
+#ask-no:hover{background:rgba(80,58,32,.85);color:#fff}
+@media(max-width:1024px){
+  .nav-links{display:none}
+  #menu-btn{display:block}
+  .footer-grid{grid-template-columns:repeat(2,1fr)}
+  .testi-grid{grid-template-columns:1fr}
+  .feat-grid{grid-template-columns:1fr}
+  .hx-moon{width:9rem;height:9rem;top:5.5rem;right:3vw;opacity:.35}
+  .cobweb{width:7rem;height:7rem}
+}
+@media(max-width:768px){
+  .notice-track{font-size:.75rem}
+  .notice-viewport{-webkit-mask-image:linear-gradient(90deg,transparent 0,transparent 34px,#000 86px,#000 calc(100% - 178px),transparent calc(100% - 126px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,transparent 34px,#000 86px,#000 calc(100% - 178px),transparent calc(100% - 126px),transparent 100%)}
+  .notice-guard-l{padding-right:.9rem}
+  .notice-guard-r{padding-left:1.2rem;gap:.05rem}
+  .notice-arrow{width:1.35rem;height:1.35rem}
+  .notice-close{width:1.45rem;height:1.45rem}
+  .notice-idx{min-width:2rem;font-size:.65rem}
+  .stats-row,.social-row{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .svc-grid{grid-template-columns:repeat(3,1fr)}
+  .cta-card{padding:1.5rem}
+  .hero{padding-top:5rem}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .footer-bottom{flex-direction:column;gap:.75rem}
+  .sim-side{width:7rem}
+  .sim-tab{font-size:.72rem;padding:.5rem .5rem}
+  .intro-greet{grid-template-columns:1fr}
+  .intro-greet p.r{text-align:left}
+  .demo-row{flex-direction:column}
+  .btn-demo{justify-content:center}
+  .hx-moon{width:7rem;height:7rem;opacity:.28}
+  .cobweb{width:5rem;height:5rem;opacity:.7}
+  .bat-3{width:2.2rem}
+}
+@media(max-width:480px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+.fb-card{position:relative;max-width:42rem;margin:0 auto;background:rgba(12,8,4,.78);border:1px solid #3b2a17;border-radius:1.25rem;padding:1.5rem;backdrop-filter:blur(4px);box-shadow:0 25px 50px -12px rgba(0,0,0,.55)}
+.fb-card::before{content:"";position:absolute;inset:-1px;border-radius:1.3rem;padding:1px;background:linear-gradient(120deg,rgba(249,115,22,.55),transparent 40%,transparent 60%,rgba(163,230,53,.5));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.fb-field{margin-bottom:1rem}
+.fb-field label{display:block;font-size:.75rem;font-weight:600;color:#a1a1aa;margin-bottom:.4rem;letter-spacing:.05em}
+.fb-field select,.fb-field input,.fb-field textarea{width:100%;background:rgba(26,18,10,.85);border:1px solid #4a3520;border-radius:.75rem;outline:0;padding:.75rem 1rem;font-size:.9rem;color:#fff;font-family:inherit;transition:border-color .15s;resize:vertical}
+.fb-field select:focus,.fb-field input:focus,.fb-field textarea:focus{border-color:rgba(249,115,22,.65);box-shadow:0 0 0 3px rgba(249,115,22,.1)}
+.fb-field textarea{min-height:7.5rem;line-height:1.7}
+.fb-field ::placeholder{color:#5c4a35}
+.fb-actions{display:flex;gap:.75rem;flex-wrap:wrap;align-items:center}
+.fb-mail{display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:#7a6a55;word-break:break-all}
+.fb-mail svg{width:.85rem;height:.85rem;color:#fdba74;flex-shrink:0}
+.fb-mail b{color:#e7d8c2;font-weight:600}
+body.no-notice .notice-bar{display:none}
+body.no-notice main{padding-top:4rem}
+</style>
+</head>
+<body>
+<div id="apple-intro" aria-hidden="true">
+  <div class="ai-word" id="ai-word"></div>
+  <div class="ai-tag" id="ai-tag">全网最丝滑 ROBLOX 付费脚本 · 万圣节特辑</div>
+  <div class="ai-line" id="ai-line"><i></i></div>
+  <div class="ai-feats" id="ai-feats">
+    <span>80 个服务器 · 一密通用</span>
+    <span>秒级注入 · 稳定奔放</span>
+    <span>24 小时在线更新</span>
+  </div>
+  <button class="ai-skip" id="ai-skip">跳过 ›</button>
+</div>
+<div id="audio-debug">audio: 初始化…</div>
+<div id="music-ask">
+  <div class="ask-card">
+    <div class="ask-title">🎃 要不要开点万圣节音乐？</div>
+    <div class="ask-sub">3 Strikes（苹果高燃进行曲）· 秋水</div>
+    <div class="ask-btns">
+      <button id="ask-yes" type="button">✓ 是，播放音乐</button>
+      <button id="ask-no" type="button">否，静音浏览</button>
+    </div>
+  </div>
+</div>
+<audio id="bg-music" loop preload="auto" referrerpolicy="no-referrer"
+  src="3387186457.mp3"></audio>
+<div id="music-player" title="点击播放/暂停">
+  <div id="music-disc"><img src="https://p2.music.126.net/t5rwbNT3lljHfgg_zAEJpA==/109951173291838125.jpg" alt="专辑封面" /></div>
+  <div id="music-info">
+    <div id="music-name">3 Strikes（苹果高燃进行曲）</div>
+    <div id="music-singer">秋水 · 网易云音乐</div>
+  </div>
+  <button id="music-toggle" aria-label="播放/暂停音乐">
+    <svg id="music-icon-play" viewBox="0 0 24 24" fill="currentColor" style="display:block"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+    <svg id="music-icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="5" y="4" width="4.5" height="16" rx="1"/><rect x="14.5" y="4" width="4.5" height="16" rx="1"/></svg>
+  </button>
+</div>
+<div class="bg-glow" aria-hidden="true">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="blob blob-4"></div>
+</div>
+<div class="hx-moon" aria-hidden="true"></div>
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div id="halloween-fx" aria-hidden="true">
+  <div class="bat bat-1">
+    <svg viewBox="0 0 120 64"><path d="M60 34c-5-13-19-21-38-17 9 6 7 17 14 21-9 2-16-3-23-10 5 16 19 25 34 22-4 7-11 11-19 13 18 2 31-8 38-17 7 9 20 19 38 17-8-2-15-6-19-13 15 3 29-6 34-22-7 7-14 12-23 10 7-4 5-15 14-21-19-4-33 4-38 17z"/></svg>
+  </div>
+  <div class="bat bat-2">
+    <svg viewBox="0 0 120 64"><path d="M60 34c-5-13-19-21-38-17 9 6 7 17 14 21-9 2-16-3-23-10 5 16 19 25 34 22-4 7-11 11-19 13 18 2 31-8 38-17 7 9 20 19 38 17-8-2-15-6-19-13 15 3 29-6 34-22-7 7-14 12-23 10 7-4 5-15 14-21-19-4-33 4-38 17z"/></svg>
+  </div>
+  <div class="bat bat-3">
+    <svg viewBox="0 0 120 64"><path d="M60 34c-5-13-19-21-38-17 9 6 7 17 14 21-9 2-16-3-23-10 5 16 19 25 34 22-4 7-11 11-19 13 18 2 31-8 38-17 7 9 20 19 38 17-8-2-15-6-19-13 15 3 29-6 34-22-7 7-14 12-23 10 7-4 5-15 14-21-19-4-33 4-38 17z"/></svg>
+  </div>
+  <div class="bat bat-4">
+    <svg viewBox="0 0 120 64"><path d="M60 34c-5-13-19-21-38-17 9 6 7 17 14 21-9 2-16-3-23-10 5 16 19 25 34 22-4 7-11 11-19 13 18 2 31-8 38-17 7 9 20 19 38 17-8-2-15-6-19-13 15 3 29-6 34-22-7 7-14 12-23 10 7-4 5-15 14-21-19-4-33 4-38 17z"/></svg>
+  </div>
+  <div class="ghost ghost-1">
+    <svg viewBox="0 0 64 72" fill="currentColor">
+      <path d="M32 4C18 4 8 14 8 28v36c0 2.6 2.6 4 4.6 2.4L19 61l6.4 5.4c1.6 1.4 3.6 1.4 5.2 0L37 61l6.4 5.4c2 1.6 4.6.2 4.6-2.4V28C48 14 46 4 32 4z"/>
+      <ellipse cx="24" cy="30" rx="3.2" ry="4.2" fill="#05030a"/>
+      <ellipse cx="40" cy="30" rx="3.2" ry="4.2" fill="#05030a"/>
+    </svg>
+  </div>
+  <div class="ghost ghost-2">
+    <svg viewBox="0 0 64 72" fill="currentColor">
+      <path d="M32 4C18 4 8 14 8 28v36c0 2.6 2.6 4 4.6 2.4L19 61l6.4 5.4c1.6 1.4 3.6 1.4 5.2 0L37 61l6.4 5.4c2 1.6 4.6.2 4.6-2.4V28C48 14 46 4 32 4z"/>
+      <ellipse cx="24" cy="30" rx="3.2" ry="4.2" fill="#05030a"/>
+      <ellipse cx="40" cy="30" rx="3.2" ry="4.2" fill="#05030a"/>
+    </svg>
+  </div>
+</div>
+<svg class="cobweb cobweb-l" viewBox="0 0 120 120" aria-hidden="true">
+  <g fill="none" stroke="currentColor" stroke-width="1">
+    <path d="M0 0 L118 0"/><path d="M0 0 L110 32"/><path d="M0 0 L90 72"/>
+    <path d="M0 0 L58 100"/><path d="M0 0 L28 112"/><path d="M0 0 L0 118"/>
+    <path d="M22 0 Q15 15 0 22"/><path d="M46 0 Q32 32 0 46"/>
+    <path d="M72 0 Q50 50 0 72"/><path d="M98 0 Q68 68 0 98"/>
+  </g>
+</svg>
+<svg class="cobweb cobweb-r" viewBox="0 0 120 120" aria-hidden="true">
+  <g fill="none" stroke="currentColor" stroke-width="1">
+    <path d="M0 0 L118 0"/><path d="M0 0 L110 32"/><path d="M0 0 L90 72"/>
+    <path d="M0 0 L58 100"/><path d="M0 0 L28 112"/><path d="M0 0 L0 118"/>
+    <path d="M22 0 Q15 15 0 22"/><path d="M46 0 Q32 32 0 46"/>
+    <path d="M72 0 Q50 50 0 72"/><path d="M98 0 Q68 68 0 98"/>
+  </g>
+</svg>
+<nav>
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a class="logo" href="#"><span class="logo-pumpkin">🎃</span><span><span class="accent">WX</span> HUB</span></a>
+      <div class="nav-links">
+        <a href="#" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>首页</a>
+        <a href="#games"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>支持游戏</a>
+        <a href="#features"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>功能</a>
+        <a href="#faq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>常见问题</a>
+        <a href="#feedback"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>意见反馈</a>
+        <a href="https://ds.xiaoman.top/links/342F4A3D" target="_blank" rel="noopener" class="premium"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7z"/><path d="M5 20h14"/></svg>购买卡密</a>
+      </div>
+    </div>
+    <div class="nav-right">
+      <a class="btn-login" href="https://ds.xiaoman.top/links/342F4A3D" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></svg>购买卡密</a>
+      <button id="menu-btn" aria-label="打开菜单"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg></button>
+    </div>
+  </div>
+  <div id="mobile-menu">
+    <a href="#">首页</a><a href="#games">支持游戏</a><a href="#features">功能</a><a href="#faq">常见问题</a><a href="#feedback">意见反馈</a><a href="https://ds.xiaoman.top/links/342F4A3D" target="_blank" rel="noopener">购买卡密</a>
+  </div>
+</nav>
+<div class="notice-bar" id="notice-bar" role="alert">
+  <div class="notice-viewport" id="notice-viewport">
+    <div class="notice-track" id="notice-track"></div>
+  </div>
+  <div class="notice-guard notice-guard-l">
+    <span class="notice-ico">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+    </span>
+  </div>
+  <div class="notice-guard notice-guard-r" id="notice-arrows">
+    <button class="notice-arrow" id="notice-prev" type="button" aria-label="上一条通知"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <span class="notice-idx" id="notice-idx">1/3</span>
+    <button class="notice-arrow" id="notice-next" type="button" aria-label="下一条通知"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+    <button class="notice-arrow notice-close" id="notice-close" type="button" aria-label="关闭通知条" title="关闭通知条"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+  </div>
+</div>
+<main>
+  <section class="hero">
+    <h1><span class="h1-pumpkin" aria-hidden="true">🎃</span>WX HUB<span class="word-badge"><span class="rot" id="rot-word"></span></span></h1>
+    <p>万圣节之夜，南瓜灯亮起，脚本也一起狂欢。全网最丝滑 Roblox 付费脚本，支持 80 个服务器（持续更新）。一个卡密，全部解锁，秒级注入、稳定奔放、24 小时在线更新。</p>
+    <div class="price-tag">
+      <span class="sub">单设备版</span><span class="num">15</span><span class="yuan">元</span>
+      <span class="sep"></span>
+      <span class="sub">三设备版</span><span class="num">30</span><span class="yuan">元</span>
+    </div>
+  </section>
+  <div class="bypass-wrap">
+    <div class="demo-card" id="demo-card">
+      <div class="demo-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>在线体验 · 完整执行流程演示</div>
+      <div class="demo-row">
+        <input type="text" id="demo-input" placeholder="输入任意卡密，即刻在网页里体验脚本全流程…" autocomplete="off" />
+        <button type="button" class="btn-demo" id="demo-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>立即体验</button>
+      </div>
+      <div class="demo-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>演示模式：输入任意内容即可体验「开场动画 → 加载界面 → 脚本主界面」，购买真实卡密后体验完全一致。</div>
+    </div>
+  </div>
+  <section class="stats reveal">
+    <div class="stats-row">
+      <div class="stat-card"><span class="stat-num">80</span><span class="stat-label">支持服务器</span></div>
+      <div class="stat-card"><span class="stat-num">200+</span><span class="stat-label">累计用户</span></div>
+      <div class="stat-card"><span class="stat-num">24/7</span><span class="stat-label">在线更新</span></div>
+    </div>
+    <div class="social-row">
+      <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=cQzlxE4RWwLqF68hA51A2WyRSBaCq0D1" target="_blank" rel="noopener" class="social-card">
+        <div class="social-icon si-qq"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 11.9c0 2.6 1.1 5 2.9 6.8-.1.9-.6 2.7-1.9 4.3 0 0 2.7-.3 5.4-2.2.9.2 1.8.4 2.6.4 5.52 0 10-4.48 10-9.9S17.52 2 12 2zm-2.6 12.6c-.8.1-1.6-.4-1.8-1.2-.2-.8.3-1.6 1.1-1.8.8-.2 1.6.3 1.8 1.1.2.9-.3 1.7-1.1 1.9zm5.2 0c-.8.1-1.6-.4-1.8-1.2-.2-.8.3-1.6 1.1-1.8.8-.2 1.6.3 1.8 1.1.2.9-.3 1.7-1.1 1.9z"/></svg></div>
+        <div><p class="t">QQ 交流群</p><p class="s">959952398 · 玩家交流 · 更新公告</p></div>
+        <span class="chip">加群 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+      </a>
+      <a href="http://wpa.qq.com/msgrd?v=3&uin=1969727442&site=qq&menu=yes" target="_blank" rel="noopener" class="social-card">
+        <div class="social-icon si-plain"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+        <div><p class="t">客服一号</p><p class="s">QQ 1969727442 · 购卡售后 · 技术支持</p></div>
+        <span class="chip">咨询 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+      </a>
+      <a href="https://ds.xiaoman.top/links/342F4A3D" target="_blank" rel="noopener" class="social-card">
+        <div class="social-icon si-plain"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
+        <div><p class="t">购买卡密</p><p class="s">永久卡 · 单设备 15 元 / 三设备 30 元</p></div>
+        <span class="chip">购买 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+      </a>
+    </div>
+  </section>
+  <section class="section reveal" id="buy">
+    <div class="cta-card">
+      <div class="cta-inner">
+        <div>
+          <h2>万圣节特惠 · 立即获取 <span class="hl">WX HUB</span> 永久卡密</h2>
+          <p>一张卡密，80 个服务器全部解锁，永久使用。从力量传奇、忍者传奇到 Doors、死铁轨、暴力区、狙击竞技场，热门全覆盖，持续上新。注入即用、秒级响应、稳定防检测，自助购买、自动发货、即买即用。</p>
+          <div class="price-cards">
+            <div class="price-card">
+              <div class="pc-name">单设备版</div>
+              <div class="pc-price">15 元</div>
+              <div class="pc-desc">绑定 1 台设备 · 永久使用</div>
+            </div>
+            <div class="price-card hot">
+              <div class="pc-name">三设备版</div>
+              <div class="pc-price">30 元</div>
+              <div class="pc-desc">绑定 3 台设备 · 永久使用</div>
+            </div>
+          </div>
+        </div>
+        <div class="btn-row">
+          <a href="https://ds.xiaoman.top/links/342F4A3D" target="_blank" rel="noopener" class="btn-primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>立即购买</a>
+          <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=cQzlxE4RWwLqF68hA51A2WyRSBaCq0D1" target="_blank" rel="noopener" class="btn-ghost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>加入 QQ 群</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section reveal" id="how">
+    <div class="section-title"><h2>如何使用</h2><p>三个步骤，一分钟开冲。</p></div>
+    <div class="steps">
+      <div class="step"><span class="step-num">01</span><div><h3>购买卡密</h3><p>点击「购买卡密」进入发卡网自助下单，单设备 15 元、三设备 30 元，永久卡付款后秒发。</p></div></div>
+      <div class="step"><span class="step-num">02</span><div><h3>进群拿脚本</h3><p>进群 959952398 获取最新脚本与注入教程，有任何问题直接戳客服 QQ。</p></div></div>
+      <div class="step"><span class="step-num">03</span><div><h3>注入开冲</h3><p>复制脚本进你的执行器，粘贴卡密验证通过，80 个服务器全功能直接解锁。</p></div></div>
+    </div>
+  </section>
+  <section class="section reveal" id="games">
+    <div class="section-title"><h2>支持的服务器</h2><p>80 个服务器全覆盖，持续更新，进 QQ 群许愿新游戏。</p></div>
+    <div class="svc-grid" id="svc-grid">
+      <div class="svc"><span>nico的下一个机器人</span></div>
+      <div class="svc"><span>力量传奇</span></div>
+      <div class="svc"><span>最坚强战场</span></div>
+      <div class="svc"><span>冰冷的黄昏</span></div>
+      <div class="svc"><span>猴子感染</span></div>
+      <div class="svc"><span>vr手</span></div>
+      <div class="svc"><span>速度传奇</span></div>
+      <div class="svc"><span>忍者传奇</span></div>
+      <div class="svc"><span>在超市生活一周</span></div>
+      <div class="svc"><span>凹凸世界</span></div>
+      <div class="svc"><span>骨折IV</span></div>
+      <div class="svc"><span>破坏者谜团</span></div>
+      <div class="svc"><span>动物医院</span></div>
+      <div class="svc"><span>森林中的99夜</span></div>
+      <div class="svc"><span>堡垒之夜</span></div>
+      <div class="svc"><span>doors</span></div>
+      <div class="svc"><span>偷一个蛋</span></div>
+      <div class="svc"><span>七日生存</span></div>
+      <div class="svc"><span>不要离开圈子</span></div>
+      <div class="svc"><span>中国人能飞</span></div>
+      <div class="svc"><span>亡命速递</span></div>
+      <div class="svc"><span>伐木大亨2</span></div>
+      <div class="svc"><span>俄亥俄州</span></div>
+      <div class="svc"><span>决斗场</span></div>
+      <div class="svc"><span>出售柠檬</span></div>
+      <div class="svc"><span>别回头看</span></div>
+      <div class="svc"><span>南极探险队</span></div>
+      <div class="svc"><span>变形升级</span></div>
+      <div class="svc"><span>变身躲猫猫</span></div>
+      <div class="svc"><span>吃吃世界</span></div>
+      <div class="svc"><span>吃掉其他人来成长</span></div>
+      <div class="svc"><span>合成一个核弹</span></div>
+      <div class="svc"><span>国人电梯</span></div>
+      <div class="svc"><span>圣地亚哥边境</span></div>
+      <div class="svc"><span>在末日中生存</span></div>
+      <div class="svc"><span>地铁冲浪</span></div>
+      <div class="svc"><span>寻找针</span></div>
+      <div class="svc"><span>巨剑骑士</span></div>
+      <div class="svc"><span>恶魔学</span></div>
+      <div class="svc"><span>戒网瘾中心</span></div>
+      <div class="svc"><span>战斗砖块</span></div>
+      <div class="svc"><span>找出谁打了一巴掌</span></div>
+      <div class="svc"><span>找到按钮</span></div>
+      <div class="svc"><span>找到菜鸟的变形形态</span></div>
+      <div class="svc"><span>捕捉并驯服吧</span></div>
+      <div class="svc"><span>最终战场</span></div>
+      <div class="svc"><span>木筏101天生存</span></div>
+      <div class="svc"><span>模仿者</span></div>
+      <div class="svc"><span>死亡避难所</span></div>
+      <div class="svc"><span>汉堡包</span></div>
+      <div class="svc"><span>沉默的刺客</span></div>
+      <div class="svc"><span>泰坦钓鱼</span></div>
+      <div class="svc"><span>烤或死</span></div>
+      <div class="svc"><span>犯罪大亨</span></div>
+      <div class="svc"><span>生存与杀手</span></div>
+      <div class="svc"><span>画我</span></div>
+      <div class="svc"><span>疯狂电梯</span></div>
+      <div class="svc"><span>盲射</span></div>
+      <div class="svc"><span>种植花园</span></div>
+      <div class="svc"><span>种植花园2</span></div>
+      <div class="svc"><span>紧急汉堡</span></div>
+      <div class="svc"><span>能量爆炸幸运方块</span></div>
+      <div class="svc"><span>自然灾害</span></div>
+      <div class="svc"><span>血腥的游乐场</span></div>
+      <div class="svc"><span>被遗弃</span></div>
+      <div class="svc"><span>踢出幸运方块</span></div>
+      <div class="svc"><span>逃跑者</span></div>
+      <div class="svc"><span>通用血布娃娃战斗</span></div>
+      <div class="svc"><span>造船寻宝</span></div>
+      <div class="svc"><span>键盘速度逃脱</span></div>
+      <div class="svc"><span>闪光</span></div>
+      <div class="svc"><span>鲨口求生</span></div>
+      <div class="svc"><span>csgo</span></div>
+      <div class="svc"><span>投掷一个物品和人物</span></div>
+      <div class="svc"><span>战争大亨</span></div>
+      <div class="svc"><span>监狱人生</span></div>
+      <div class="svc"><span>战壕战斗</span></div>
+      <div class="svc"><span>死铁轨</span></div>
+      <div class="svc"><span>暴力区</span></div>
+      <div class="svc"><span>狙击竞技场</span></div>
+    </div>
+    <button class="more-btn" id="more-btn" type="button">展开全部 80 个服务器 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+  </section>
+  <section class="section reveal" id="features">
+    <div class="section-title"><h2>为什么选择 WX HUB</h2><p>不是支持的游戏多，是每一款都做到极致。</p></div>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <div><h3>秒级注入</h3><p>轻量级加载引擎，点开即注入，告别转圈等待，进图比别人快一步。</p></div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div><h3>稳定防检测</h3><p>独有混淆与心跳伪装技术，大幅降低检测率，奔放一整天不掉线。</p></div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg></div>
+        <div><h3>24/7 在线更新</h3><p>游戏一更新，脚本跟着更。热修复平均 2 小时内推送，永不断更。</p></div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+        <div><h3>客服秒回</h3><p>客服 QQ 一对一服务，购卡、验证、报错全程协助，有问题随时找。</p></div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <div><h3>一密通用</h3><p>单设备版 15 元、三设备版 30 元，解锁全部 80 个服务器全部功能，永久使用。</p></div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <div><h3>持续上新</h3><p>进 QQ 群许愿想玩的游戏，投票决定下一个支持的服务器，你要的我们真做。</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="section reveal" id="compare">
+    <div class="section-title"><h2>正面对比</h2><p>WX HUB 对比免费脚本与其他付费脚本</p></div>
+    <div class="table-shell">
+      <table>
+        <thead><tr><th>功能</th><th class="hl">WX HUB</th><th class="dim">免费脚本</th><th class="dim">其他付费脚本</th></tr></thead>
+        <tbody>
+          <tr><td>稳定奔放不频繁</td><td><svg class="ic ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></td><td><svg class="ic ic-no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg></td><td><span class="ic-part">部分</span></td></tr>
+          <tr><td>支持服务器数量</td><td><b style="color:#fdba74">80 个</b></td><td>3-5 个</td><td>10-20 个</td></tr>
+          <tr><td>更新速度（平均 2 小时）</td><td><svg class="ic ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></td><td><svg class="ic ic-no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg></td><td><span class="ic-part">部分</span></td></tr>
+          <tr><td>一密全服务器通用</td><td><svg class="ic ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></td><td><svg class="ic ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></td><td><svg class="ic ic-no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg></td></tr>
+          <tr><td>卡密类型</td><td><b style="color:#fdba74">永久卡</b></td><td>无卡密易跑路</td><td>月卡/年卡</td></tr>
+          <tr><td>设备绑定</td><td><b style="color:#fdba74">1 台 / 3 台可选</b></td><td>-</td><td>多为单设备</td></tr>
+          <tr><td>专属客服一对一</td><td><svg class="ic ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></td><td><svg class="ic ic-no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg></td><td><span class="ic-part">部分</span></td></tr>
+          <tr><td>无广告无暗门</td><td><svg class="ic ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></td><td><svg class="ic ic-no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg></td><td><span class="ic-part">部分</span></td></tr>
+          <tr><td>卡密自动发货</td><td><svg class="ic ic-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></td><td><svg class="ic ic-no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg></td><td><span class="ic-part">部分</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section class="section reveal" id="reviews">
+    <div class="testi-head">
+      <div><h2>玩家怎么说</h2><p>来自 QQ 群的真实反馈 · 全部为永久卡用户</p></div>
+    </div>
+    <div class="testi-grid">
+      <div class="testi">
+        <q>15 块单设备永久卡能买到 80 个服务器的脚本，还要啥自行车。力量传奇和忍者传奇挂了一周啥事没有，更新也快，群里一喊客服就回。</q>
+        <div class="testi-foot">
+          <div class="testi-user"><div class="avatar">夜</div><div><p class="n">夜枭</p><p class="r">永久卡用户</p></div></div>
+          <div class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        </div>
+      </div>
+      <div class="testi">
+        <q>买的三设备版，电脑手机平板全绑上了，一个价全搞定。Doors 玩家狂喜，刷实体、透视、夜视全都有，这波属于是买一发入魂了。狙击竞技场也上了，爽。</q>
+        <div class="testi-foot">
+          <div class="testi-user"><div class="avatar">白</div><div><p class="n">白给少年</p><p class="r">永久卡用户 · 三设备版</p></div></div>
+          <div class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        </div>
+      </div>
+      <div class="testi">
+        <q>第一次买卡密不懂操作，客服手把手教了二十分钟，从购买到注入全搞定。死铁轨的自动化挂一晚稳定得很，永久卡 15 元花得值。暴力区和狙击竞技场也都上了，爽。</q>
+        <div class="testi-foot">
+          <div class="testi-user"><div class="avatar">猫</div><div><p class="n">猫南北</p><p class="r">永久卡用户</p></div></div>
+          <div class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section reveal" id="faq" style="margin-bottom:4rem">
+    <div class="section-title"><h2>常见问题</h2></div>
+    <div class="faq-list">
+      <details><summary>WX HUB 是什么？<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary><div class="faq-body">一款付费 Roblox 多合一脚本，永久卡制：单设备版 15 元（绑定 1 台设备）、三设备版 30 元（绑定 3 台设备），解锁 80 个服务器的全部功能，持续更新维护。</div></details>
+      <details><summary>卡密有哪几种规格？<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary><div class="faq-body">两种规格，均为永久卡：单设备版 15 元，卡密绑定 1 台设备；三设备版 30 元，卡密可绑定 3 台设备。按自己设备数量选购即可。</div></details>
+      <details><summary>怎么购买卡密？<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary><div class="faq-body">点击页面上任意「购买卡密」按钮，进入发卡网自助下单，付款成功后卡密自动发货，即买即用。</div></details>
+      <details><summary>买了不会用怎么办？<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary><div class="faq-body">加入 QQ 群 959952398 看置顶的注入教程，或者直接加客服 QQ 1969727442，一对一包教包会。也可以先在网页顶部「在线体验」里过一遍完整流程。</div></details>
+      <details><summary>支持哪些服务器？<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary><div class="faq-body">目前支持 80 个服务器，包括力量传奇、忍者传奇、Doors、死铁轨、暴力区、狙击竞技场、冰冷的黄昏（国内第一个做的）等，完整名单见上方列表，新服务器持续增加，可以在群里许愿。</div></details>
+      <details><summary>游戏更新了脚本会失效吗？<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary><div class="faq-body">游戏大更后脚本可能短暂失效，我们承诺平均 2 小时内热修复推送，群里会第一时间发公告。</div></details>
+      <details><summary>卡密可以换设备用吗？<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary><div class="faq-body">卡密按规格绑定设备：单设备版绑定 1 台，三设备版绑定 3 台。绑定后更换设备需联系客服 QQ 1969727442 处理。</div></details>
+    </div>
+  </section>
+  <section class="section reveal" id="feedback" style="margin-bottom:6rem">
+    <div class="section-title"><h2>意见反馈</h2><p>遇到 bug、有想要的功能、或者对网站有建议，都欢迎告诉我们。</p></div>
+    <div class="fb-card">
+      <div class="fb-field">
+        <label for="fb-type">反馈类型</label>
+        <select id="fb-type">
+          <option value="【BUG反馈】">BUG 反馈</option>
+          <option value="【功能建议】">功能建议</option>
+          <option value="【新服务器许愿】">新服务器许愿</option>
+          <option value="【购卡/卡密问题】">购卡 / 卡密问题</option>
+          <option value="【其他】">其他</option>
+        </select>
+      </div>
+      <div class="fb-field">
+        <label for="fb-title">标题</label>
+        <input type="text" id="fb-title" placeholder="一句话说清你的反馈，例如：力量传奇自动农场失效" autocomplete="off" />
+      </div>
+      <div class="fb-field">
+        <label for="fb-content">详细描述</label>
+        <textarea id="fb-content" placeholder="详细描述你遇到的问题或建议：出现场景、复现步骤、期望的效果……写得越清楚，我们处理得越快。"></textarea>
+      </div>
+      <div class="fb-field">
+        <label for="fb-contact">联系方式（选填）</label>
+        <input type="text" id="fb-contact" placeholder="QQ 号，方便我们回复你处理结果" autocomplete="off" />
+      </div>
+      <div class="fb-actions">
+        <button type="button" class="btn-primary" id="fb-send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>发送反馈</button>
+        <button type="button" class="btn-ghost" id="fb-copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>复制邮箱</button>
+        <span class="fb-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>收件邮箱：<b>rbwr54698@gmail.com</b></span>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo"><span class="logo-pumpkin">🎃</span><span><span class="accent">WX</span> HUB</span></span>
+        <p>全网最丝滑 Roblox 付费脚本。
+永久卡 · 80 个服务器 · 一密通用。</p>
+        <div class="footer-social">
+          <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=cQzlxE4RWwLqF68hA51A2WyRSBaCq0D1" target="_blank" rel="noopener" title="QQ 交流群" style="background:rgba(249,115,22,.15);border-color:rgba(249,115,22,.25);color:#fb923c"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 11.9c0 2.6 1.1 5 2.9 6.8-.1.9-.6 2.7-1.9 4.3 0 0 2.7-.3 5.4-2.2.9.2 1.8.4 2.6.4 5.52 0 10-4.48 10-9.9S17.52 2 12 2zm-2.6 12.6c-.8.1-1.6-.4-1.8-1.2-.2-.8.3-1.6 1.1-1.8.8-.2 1.6.3 1.8 1.1.2.9-.3 1.7-1.1 1.9zm5.2 0c-.8.1-1.6-.4-1.8-1.2-.2-.8.3-1.6 1.1-1.8.8-.2 1.6.3 1.8 1.1.2.9-.3 1.7-1.1 1.9z"/></svg></a>
+          <a href="http://wpa.qq.com/msgrd?v=3&uin=1969727442&site=qq&menu=yes" target="_blank" rel="noopener" title="客服 QQ" style="background:rgba(163,230,53,.14);border-color:rgba(163,230,53,.25);color:#a3e635"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col"><h2>快速入口</h2><ul>
+        <li><a href="https://ds.xiaoman.top/links/342F4A3D" target="_blank" rel="noopener">购买卡密（永久卡）</a></li>
+        <li><a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=cQzlxE4RWwLqF68hA51A2WyRSBaCq0D1" target="_blank" rel="noopener">加入 QQ 交流群</a></li>
+        <li><a href="http://wpa.qq.com/msgrd?v=3&uin=1969727442&site=qq&menu=yes" target="_blank" rel="noopener">联系客服一号</a></li>
+        <li><a href="#feedback">意见反馈</a></li>
+      </ul></div>
+      <div class="footer-col"><h2>站内导航</h2><ul>
+        <li><a href="#games">支持的服务器（80 个）</a></li>
+        <li><a href="#features">功能特性</a></li>
+        <li><a href="#compare">正面对比</a></li>
+        <li><a href="#reviews">玩家评价</a></li>
+        <li><a href="#faq">常见问题</a></li>
+      </ul></div>
+      <div class="footer-col"><h2>联系我们</h2><ul>
+        <li><a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=cQzlxE4RWwLqF68hA51A2WyRSBaCq0D1" target="_blank" rel="noopener">QQ 群：959952398</a></li>
+        <li><a href="http://wpa.qq.com/msgrd?v=3&uin=1969727442&site=qq&menu=yes" target="_blank" rel="noopener">客服 QQ：1969727442</a></li>
+        <li><a href="#buy">卡密购买（15 元起）</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 WX HUB · 万圣节特辑 · 本站仅供演示展示</span><span>QQ 群：959952398 · 客服：1969727442</span></div>
+  </div>
+</footer>
+<div class="overlay" id="intro-overlay">
+  <button class="intro-skip" id="intro-skip">跳过动画 →</button>
+  <div class="intro-logo" id="intro-logo"></div>
+  <div class="intro-sub" id="intro-sub"></div>
+  <div class="intro-badge" id="intro-badge">★ TRICK OR TREAT ★</div>
+  <div class="intro-greet" id="intro-greet"></div>
+  <div class="intro-bar" id="intro-bar"><i id="intro-bar-fill"></i></div>
+  <div class="intro-enjoy" id="intro-enjoy">HAPPY HALLOWEEN</div>
+</div>
+<div class="overlay" id="loader-overlay">
+  <div class="loader-card">
+    <h3 id="loader-name">亲爱的 玩家</h3>
+    <h2>欢迎使用 WX HUB</h2>
+    <div class="loader-status" id="loader-status">正在启动 WX HUB...</div>
+    <div class="loader-bar"><i id="loader-fill"></i></div>
+    <div class="loader-pct" id="loader-pct">0%</div>
+  </div>
+</div>
+<div class="overlay" id="sim-overlay">
+  <div class="sim-window">
+    <div class="sim-topbar">
+      <span class="sim-dot" style="background:#ff5f57"></span>
+      <span class="sim-dot" style="background:#febc2e"></span>
+      <span class="sim-dot" style="background:#28c840"></span>
+      <span class="sim-title">WX HUB <em>v永久版</em></span>
+      <span class="sim-badge">万圣节演示</span>
+      <button class="sim-close" id="sim-close" aria-label="关闭"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+    </div>
+    <div class="sim-body">
+      <div class="sim-side">
+        <button class="sim-tab active" data-pane="pane-notice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>公告</button>
+        <button class="sim-tab" data-pane="pane-games"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>游戏列表</button>
+        <button class="sim-tab" data-pane="pane-dev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>开发人员</button>
+        <button class="sim-tab" data-pane="pane-about"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>关于</button>
+      </div>
+      <div class="sim-content">
+        <div class="sim-pane active" id="pane-notice">
+          <div id="notice-list"><div class="sim-notice"><span class="nd">…</span><span class="nt">公告加载中…</span></div></div>
+        </div>
+        <div class="sim-pane" id="pane-games">
+          <input type="text" class="sim-search" id="sim-search" placeholder="搜索服务器…" autocomplete="off" />
+          <div class="sim-count" id="sim-count">共 80 个服务器 · 全部开放中</div>
+          <div id="sim-game-list"></div>
+          <div class="sim-legend">
+            <span><i style="background:#a3e635"></i>开放中</span>
+            <span><i style="background:#ffc83c"></i>维护中</span>
+            <span><i style="background:#ff4c4c"></i>关闭中</span>
+          </div>
+        </div>
+        <div class="sim-pane" id="pane-dev">
+          <div class="sim-dev"><div class="davatar">W</div><div><div class="dn">不公开作者</div><div class="dr">脚本作者</div><div class="dd">作者信息暂不公开</div></div></div>
+          <div class="sim-dev"><div class="davatar">客</div><div><div class="dn">客服一</div><div class="dr">官方客服</div><div class="dd">QQ：1969727442 · 每天 9:00 - 23:00 在线</div></div></div>
+        </div>
+        <div class="sim-pane sim-about" id="pane-about">
+          <p>这是 <b style="color:#fff">WX HUB 网页演示模式</b>，流程与真实脚本一致：开场动画 → 加载 → 主界面（公告 / 游戏列表 / 开发人员）。</p>
+          <p>在「游戏列表」中点击任意服务器，即可模拟执行该游戏的专属脚本。真实环境中会注入对应功能菜单（如自动农场、传送、防护等）。</p>
+          <p>购买永久卡密后，在 Roblox 执行器中输入卡密，体验与本次演示完全一致。按 <span class="sim-kbd">Esc</span> 或右上角按钮关闭演示。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="demo-toast"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span id="demo-toast-text"></span></div>
+<script>
+const DEFAULT_COLOR = "pumpkin";
+const NOTICES = [
+  "🎃 新服务器「狙击竞技场」已上线！WX HUB 现已支持 80 个服务器，永久卡 15 元起",
+  { text: "👻 「狙击竞技场」脚本已适配，平均 2 小时热修复，进群第一时间获取更新", color: "slime" },
+  { text: "🕸️ 官方唯一客服 QQ：1969727442 · 每天 9:00 - 23:00 在线", color: "blood" }
+];
+const NOTICE_THEMES = {
+  pumpkin: { bg:"rgba(249,115,22,.45)", border:"rgba(253,186,116,.35)", shadow:"rgba(249,115,22,.22)", idx:"#ffedd5" },
+  blood:   { bg:"rgba(185,28,28,.5)",   border:"rgba(254,202,202,.35)", shadow:"rgba(185,28,28,.25)", idx:"#fee2e2" },
+  slime:   { bg:"rgba(101,163,13,.5)",  border:"rgba(190,242,100,.35)", shadow:"rgba(132,204,22,.22)", idx:"#ecfccb" }
+};
+(function(){
+  var bar = document.getElementById("notice-bar");
+  if (!NOTICES.length){
+    if (bar) bar.remove();
+    document.body.classList.add("no-notice");
+    return;
+  }
+  var track = document.getElementById("notice-track");
+  var arrows = document.getElementById("notice-arrows");
+  var idxEl = document.getElementById("notice-idx");
+  var closeBtn = document.getElementById("notice-close");
+  var cur = 0;
+  var busy = false;
+  if (NOTICES.length < 2){
+    ["notice-prev", "notice-idx", "notice-next"].forEach(function(id){
+      var el = document.getElementById(id);
+      if (el) el.style.display = "none";
+    });
+  }
+  function parseNotice(n){
+    if (typeof n === "string") return { text: n, color: DEFAULT_COLOR };
+    return { text: String((n && n.text) || ""), color: String((n && n.color) || DEFAULT_COLOR).toLowerCase() };
+  }
+  function applyColor(color){
+    var t = NOTICE_THEMES[color] || NOTICE_THEMES[DEFAULT_COLOR] || NOTICE_THEMES.pumpkin;
+    if (!bar) return;
+    bar.style.setProperty("--nb-bg", t.bg);
+    bar.style.setProperty("--nb-border", t.border);
+    bar.style.setProperty("--nb-shadow", t.shadow);
+    bar.style.setProperty("--nb-idx", t.idx);
+  }
+  function applyNotice(){
+    var item = parseNotice(NOTICES[cur]);
+    applyColor(item.color);
+    track.textContent = item.text;
+    if (idxEl) idxEl.textContent = (cur + 1) + "/" + NOTICES.length;
+    track.style.animation = "none";
+    void track.offsetWidth;
+    var w = track.offsetWidth || 300;
+    var dur = Math.min(40, Math.max(12, w / 55));
+    track.style.animation = "noticeRoll " + dur + "s linear 1 forwards";
+  }
+  function changeTo(next){
+    if (busy) return;
+    busy = true;
+    track.classList.add("fading");
+    setTimeout(function(){
+      cur = ((next % NOTICES.length) + NOTICES.length) % NOTICES.length;
+      applyNotice();
+      track.classList.remove("fading");
+      busy = false;
+    }, 320);
+  }
+  track.addEventListener("animationend", function(e){
+    if (e.target !== track || e.animationName !== "noticeRoll") return;
+    changeTo(cur + 1);
+  });
+  document.getElementById("notice-prev").addEventListener("click", function(){ changeTo(cur - 1); });
+  document.getElementById("notice-next").addEventListener("click", function(){ changeTo(cur + 1); });
+  if (closeBtn){
+    closeBtn.addEventListener("click", function(e){
+      e.stopPropagation();
+      track.style.animation = "none";
+      if (bar) bar.style.display = "none";
+      document.body.classList.add("no-notice");
+      if (typeof window.showToast === "function") window.showToast("通知条已关闭");
+    });
+  }
+  applyNotice();
+})();
+(function(){
+  const words = ["力量传奇","忍者传奇","Doors","死铁轨","暴力区","狙击竞技场","冰冷的黄昏","速度传奇"];
+  const el = document.getElementById("rot-word");
+  let i = 0;
+  function render(w, animIn){
+    el.innerHTML = "";
+    [...w].forEach((ch, idx) => {
+      const s = document.createElement("span");
+      s.textContent = ch;
+      if (animIn){
+        s.style.animation = "rollIn .45s cubic-bezier(.22,1,.36,1) both";
+        s.style.animationDelay = (idx * 30) + "ms";
+      }
+      el.appendChild(s);
+    });
+  }
+  render(words[0], true);
+  setInterval(() => {
+    [...el.children].forEach((s, idx) => {
+      s.style.animation = "rollOut .35s ease-in both";
+      s.style.animationDelay = (idx * 20) + "ms";
+    });
+    setTimeout(() => {
+      i = (i + 1) % words.length;
+      render(words[i], true);
+    }, 420);
+  }, 2600);
+})();
+(function(){
+  const btn = document.getElementById("menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  btn.addEventListener("click", () => {
+    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+  });
+})();
+(function(){
+  const grid = document.getElementById("svc-grid");
+  const btn = document.getElementById("more-btn");
+  btn.addEventListener("click", () => {
+    const expanded = grid.classList.toggle("expanded");
+    btn.innerHTML = expanded
+      ? '收起列表 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>'
+      : '展开全部 80 个服务器 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>';
+  });
+})();
+(function(){
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); obs.unobserve(e.target); } });
+  }, { threshold: .08 });
+  document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
+})();
+(function(){
+  const FALLBACK = [
+    {date:"11-15", text:"🎃 新服务器「狙击竞技场」已上线！WX HUB 现已支持 80 个服务器，感谢各位玩家支持！"},
+    {date:"11-10", text:"⚡ 「狙击竞技场」脚本已适配，新游戏上架快人一步"},
+    {date:"10-31", text:"📞 客服 QQ：1969727442（官方唯一客服）\n⏰ 每天 9:00 - 23:00 在线\n📝 加好友请备注：WX HUB"}
+  ];
+  function render(list){
+    const box = document.getElementById("notice-list");
+    box.innerHTML = "";
+    list.forEach(n => {
+      const div = document.createElement("div");
+      div.className = "sim-notice";
+      const d = document.createElement("span"); d.className = "nd"; d.textContent = n.date || "--";
+      const t = document.createElement("span"); t.className = "nt"; t.textContent = n.text || "";
+      div.appendChild(d); div.appendChild(t);
+      box.appendChild(div);
+    });
+  }
+  fetch("/notices.json").then(r => {
+    if (!r.ok) throw new Error("no notices");
+    return r.json();
+  }).then(data => {
+    render(Array.isArray(data) && data.length ? data : FALLBACK);
+  }).catch(() => render(FALLBACK));
+})();
+const GAMES = ["nico的下一个机器人","力量传奇","最坚强战场","冰冷的黄昏","猴子感染","vr手","速度传奇","忍者传奇","在超市生活一周","凹凸世界","骨折IV","破坏者谜团","动物医院","森林中的99夜","堡垒之夜","doors","偷一个蛋","七日生存","不要离开圈子","中国人能飞","亡命速递","伐木大亨2","俄亥俄州","决斗场","出售柠檬","别回头看","南极探险队","变形升级","变身躲猫猫","吃吃世界","吃掉其他人来成长","合成一个核弹","国人电梯","圣地亚哥边境","在末日中生存","地铁冲浪","寻找针","巨剑骑士","恶魔学","戒网瘾中心","战斗砖块","找出谁打了一巴掌","找到按钮","找到菜鸟的变形形态","捕捉并驯服吧","最终战场","木筏101天生存","模仿者","死亡避难所","汉堡包","沉默的刺客","泰坦钓鱼","烤或死","犯罪大亨","生存与杀手","画我","疯狂电梯","盲射","种植花园","种植花园2","紧急汉堡","能量爆炸幸运方块","自然灾害","血腥的游乐场","被遗弃","踢出幸运方块","逃跑者","通用血布娃娃战斗","造船寻宝","键盘速度逃脱","闪光","鲨口求生","csgo","投掷一个物品和人物","战争大亨","监狱人生","战壕战斗","死铁轨","暴力区","狙击竞技场"];
+const GREETINGS = ["恭喜解锁全部功能，从此进图快人一步","稳定在线不掉线，是你最可靠的后盾","操作丝般顺滑，体验直接拉满","一次入手永久使用，后续更新全免费","全网 80 个热门服务器随心切换","功能全开无限制，想怎么玩就怎么玩","新手也有专人带，十分钟包教包会","兄弟用了都说好，群里好评天天见"];
+const LOAD_STEPS = [
+  {text:"正在启动 WX HUB...", progress:0},
+  {text:"点亮南瓜灯...", progress:10},
+  {text:"载入界面组件...", progress:25},
+  {text:"同步服务器数据...", progress:40},
+  {text:"检查更新...", progress:55},
+  {text:"校验卡密权限...", progress:70},
+  {text:"加载游戏列表...", progress:85},
+  {text:"即将完成...", progress:95},
+  {text:"欢迎使用！", progress:100}
+];
+(function(){
+  const FB_MAIL = "rbwr54698@gmail.com";
+  const sendBtn = document.getElementById("fb-send");
+  const copyBtn = document.getElementById("fb-copy");
+  function doCopy(){
+    const done = () => window.showToast && showToast("邮箱已复制：rbwr54698@gmail.com");
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(FB_MAIL).then(done).catch(() => fallbackCopy());
+    } else { fallbackCopy(); }
+    function fallbackCopy(){
+      const ta = document.createElement("textarea");
+      ta.value = FB_MAIL;
+      ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); done(); }
+      catch(e){ window.showToast && showToast("复制失败，请手动记下邮箱：rbwr54698@gmail.com"); }
+      document.body.removeChild(ta);
+    }
+  }
+  sendBtn.addEventListener("click", () => {
+    const type = document.getElementById("fb-type").value;
+    const title = document.getElementById("fb-title").value.trim();
+    const content = document.getElementById("fb-content").value.trim();
+    const contact = document.getElementById("fb-contact").value.trim();
+    if (!content){
+      window.showToast && showToast("先写点反馈内容再发送～");
+      document.getElementById("fb-content").focus();
+      return;
+    }
+    const subject = type + (title ? " " + title : " WX HUB 玩家反馈");
+    const lines = [
+      "【反馈类型】" + type,
+      "【标题】" + (title || "未填写"),
+      "",
+      "【详细描述】",
+      content,
+      "",
+      "【联系方式】" + (contact || "未填写"),
+      "",
+      "—— 来自 WX HUB 官网意见反馈页"
+    ];
+    const href = "mailto:" + FB_MAIL
+      + "?subject=" + encodeURIComponent(subject)
+      + "&body=" + encodeURIComponent(lines.join("\n"));
+    window.location.href = href;
+    window.showToast && showToast("正在拉起邮箱发送反馈，若没有反应请点「复制邮箱」手动发送");
+  });
+  copyBtn.addEventListener("click", doCopy);
+})();
+const $ = id => document.getElementById(id);
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+let demoRunning = false;
+function showToast(msg){
+  $("demo-toast-text").textContent = msg;
+  $("demo-toast").classList.add("show");
+  clearTimeout(showToast._t);
+  showToast._t = setTimeout(() => $("demo-toast").classList.remove("show"), 2600);
+}
+window.showToast = showToast;
+let introSkip = false;
+function playIntro(){
+  return new Promise(async resolve => {
+    introSkip = false;
+    const ov = $("intro-overlay");
+    ov.classList.add("show");
+    const logo = $("intro-logo");
+    logo.innerHTML = "";
+    "WX HUB".split("").forEach((ch, i) => {
+      if (ch === " ") { logo.appendChild(document.createTextNode("\u00A0")); return; }
+      const s = document.createElement("span");
+      s.textContent = ch;
+      s.style.animationDelay = (0.9 + i * 0.15) + "s, 0s";
+      logo.appendChild(s);
+    });
+    const greet = $("intro-greet");
+    greet.innerHTML = "";
+    GREETINGS.forEach((t, i) => {
+      const p = document.createElement("p");
+      p.textContent = "🎃 " + t;
+      p.className = i % 2 === 0 ? "l" : "r";
+      p.style.transitionDelay = (2.4 + i * 0.35) + "s";
+      greet.appendChild(p);
+    });
+    const sub = $("intro-sub"), badge = $("intro-badge"),
+          bar = $("intro-bar"), fill = $("intro-bar-fill"), enjoy = $("intro-enjoy");
+    sub.textContent = ""; badge.style.opacity = 0; badge.style.transform = "rotate(-6deg)";
+    bar.style.opacity = 0; fill.style.transition = "none"; fill.style.width = "0";
+    enjoy.style.opacity = 0; enjoy.style.transition = "opacity .3s";
+    requestAnimationFrame(() => { requestAnimationFrame(() => { fill.style.transition = "width 8s linear"; }); });
+    const wait = ms => new Promise(r => {
+      const t0 = Date.now();
+      (function chk(){ if (introSkip || Date.now() - t0 >= ms) r(); else setTimeout(chk, 60); })();
+    });
+    await wait(2200);
+    const SUB = "恭喜您成为 WX HUB 付费版使用者";
+    for (let i = 1; i <= SUB.length; i++){
+      if (introSkip) break;
+      sub.textContent = SUB.slice(0, i);
+      await sleep(65);
+    }
+    sub.textContent = SUB;
+    await wait(900);
+    badge.style.transition = ".5s cubic-bezier(.22,1,.36,1)";
+    badge.style.opacity = 1;
+    await wait(700);
+    bar.style.transition = ".5s"; bar.style.opacity = 1;
+    requestAnimationFrame(() => { fill.style.width = "100%"; });
+    [...greet.children].forEach(p => p.style.opacity = 1);
+    await wait(8200);
+    ov.style.transition = "background .12s"; ov.style.background = "#fff";
+    await sleep(130);
+    ov.style.background = "#05030a";
+    logo.style.visibility = "hidden"; sub.style.visibility = "hidden";
+    badge.style.visibility = "hidden"; greet.style.visibility = "hidden"; bar.style.visibility = "hidden";
+    enjoy.style.opacity = 1;
+    await sleep(1800);
+    enjoy.style.opacity = 0;
+    await sleep(500);
+    ov.classList.remove("show");
+    ov.style.visibility = ""; logo.style.visibility = ""; sub.style.visibility = "";
+    badge.style.visibility = ""; greet.style.visibility = ""; bar.style.visibility = "";
+    ov.style.background = "";
+    resolve();
+  });
+}
+function playLoader(){
+  return new Promise(async resolve => {
+    const ov = $("loader-overlay");
+    ov.classList.add("show");
+    const status = $("loader-status"), fill = $("loader-fill"), pct = $("loader-pct");
+    fill.style.transition = "width .5s ease";
+    for (const step of LOAD_STEPS){
+      status.textContent = step.text;
+      fill.style.width = step.progress + "%";
+      pct.textContent = step.progress + "%";
+      await sleep(420);
+    }
+    await sleep(500);
+    ov.classList.remove("show");
+    resolve();
+  });
+}
+function buildSimList(filter){
+  const list = $("sim-game-list");
+  const kw = (filter || "").trim().toLowerCase();
+  list.innerHTML = "";
+  let count = 0;
+  GAMES.forEach(name => {
+    if (kw && !name.toLowerCase().includes(kw)) return;
+    count++;
+    const row = document.createElement("div");
+    row.className = "sim-game";
+    row.innerHTML = '<span class="gdot"></span><span class="gname"></span><span class="ggo">模拟执行 →</span>';
+    row.querySelector(".gname").textContent = name;
+    row.addEventListener("click", () => showToast("已模拟执行：" + name + "（演示环境，真实脚本功能更强）"));
+    list.appendChild(row);
+  });
+  $("sim-count").textContent = kw
+    ? '搜索 "' + filter + '" · 匹配 ' + count + ' 个服务器'
+    : '共 ' + GAMES.length + ' 个服务器 · 全部开放中';
+}
+function openSim(){
+  buildSimList("");
+  $("sim-search").value = "";
+  $("sim-overlay").classList.add("show");
+  switchPane("pane-games");
+}
+function closeSim(){ $("sim-overlay").classList.remove("show"); demoRunning = false; }
+function switchPane(paneId){
+  document.querySelectorAll(".sim-tab").forEach(t =>
+    t.classList.toggle("active", t.dataset.pane === paneId));
+  document.querySelectorAll(".sim-pane").forEach(p =>
+    p.classList.toggle("active", p.id === paneId));
+}
+document.querySelectorAll(".sim-tab").forEach(t =>
+  t.addEventListener("click", () => switchPane(t.dataset.pane)));
+$("sim-search").addEventListener("input", e => buildSimList(e.target.value));
+$("sim-close").addEventListener("click", closeSim);
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeSim();
+  if (e.key === "Enter" && document.activeElement === $("demo-input")) $("demo-btn").click();
+});
+async function startDemo(){
+  if (demoRunning) return;
+  const key = $("demo-input").value.trim();
+  if (!key){
+    const card = $("demo-card");
+    card.classList.remove("shake"); void card.offsetWidth; card.classList.add("shake");
+    showToast("先随便输点内容当卡密，体验模式不验证～");
+    return;
+  }
+  demoRunning = true;
+  const masked = key.length > 6 ? key.slice(0, 3) + "****" + key.slice(-2) : key;
+  showToast("卡密 " + masked + " 验证通过，正在进入 WX HUB…");
+  await sleep(900);
+  await playIntro();
+  $("loader-name").textContent = "亲爱的 玩家" ;
+  await playLoader();
+  openSim();
+  showToast("WX HUB 加载完成，所有功能已就绪");
+}
+$("demo-btn").addEventListener("click", startDemo);
+$("intro-skip").addEventListener("click", () => { introSkip = true; });
+(function(){
+  const intro = $("apple-intro");
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let finished = false;
+  let started = false;
+  document.body.classList.add("intro-lock");
+  function finish(){
+    if (finished) return;
+    finished = true;
+    intro.classList.add("done");
+    document.body.classList.remove("intro-lock");
+    setTimeout(() => intro.remove(), 1200);
+  }
+  function startIntro(){
+    if (started) return;
+    started = true;
+    const word = $("ai-word");
+    "WX HUB".split("").forEach(ch => {
+      if (ch === " "){ word.appendChild(document.createTextNode("\u00A0")); return; }
+      const sp = document.createElement("span");
+      sp.textContent = ch;
+      word.appendChild(sp);
+    });
+    [...word.children].forEach((sp, i) => {
+      sp.style.fontWeight = i < 2 ? 700 : 300;
+      sp.style.transitionDelay = (reduced ? 0 : 0.3 + i * 0.22) + "s";
+      requestAnimationFrame(() => sp.classList.add("on"));
+    });
+    const T = reduced ? 40 : 1;
+    setTimeout(() => $("ai-tag").classList.add("on"), 2000 * T);
+    setTimeout(() => { $("ai-line").classList.add("go"); $("ai-skip").classList.add("show"); }, 2900 * T);
+    const feats = [...document.querySelectorAll("#ai-feats span")];
+    feats.forEach((f, i) => {
+      setTimeout(() => f.classList.add("on"), (4400 + i * 1500) * T);
+      if (i < feats.length - 1)
+        setTimeout(() => { f.classList.remove("on"); f.classList.add("off"); }, (4400 + (i + 1) * 1500) * T);
+    });
+    $("ai-skip").addEventListener("click", finish);
+    setTimeout(finish, reduced ? 900 : 9900);
+  }
+  const ask = $("music-ask");
+  function closeAsk(pick){
+    ask.classList.add("gone");
+    setTimeout(() => ask.remove(), 500);
+    try {
+      if (pick === "yes" && window.wxMusic) window.wxMusic.play();
+      if (pick === "no" && window.wxMusic) window.wxMusic.skip();
+    } catch (e) {}
+    startIntro();
+  }
+  $("ask-yes").addEventListener("click", () => closeAsk("yes"));
+  $("ask-no").addEventListener("click", () => closeAsk("no"));
+  ask.addEventListener("click", e => { if (e.target === ask) closeAsk("no"); });
+})();
+(function(){
+  const audio = $("bg-music");
+  const player = $("music-player");
+  const btn = $("music-toggle");
+  const iconPlay = $("music-icon-play");
+  const iconPause = $("music-icon-pause");
+  const MUSIC_SOURCES = [
+    "3387186457.mp3",
+    "https://api.injahow.cn/meting/?type=url&id=3387186457",
+    "https://music.163.com/song/media/outer/url?id=3387186457.mp3"
+  ];
+  let userPaused = false;
+  let srcIdx = 0;
+  function refreshIcon(){
+    const playing = !audio.paused;
+    player.classList.toggle("playing", playing);
+    iconPlay.style.display = playing ? "none" : "block";
+    iconPause.style.display = playing ? "block" : "none";
+  }
+  function attempt(){
+    if (userPaused) return;
+    audio.muted = false;
+    audio.play().then(() => { refreshIcon(); }).catch(() => {
+      audio.muted = true;
+      audio.play().then(() => { refreshIcon(); }).catch(() => {});
+    });
+  }
+  audio.addEventListener("error", () => {
+    if (srcIdx < MUSIC_SOURCES.length - 1){
+      srcIdx++;
+      audio.src = MUSIC_SOURCES[srcIdx];
+      attempt();
+    } else if (!audio.dataset.errored){
+      audio.dataset.errored = "1";
+      console.warn("all music sources failed");
+    }
+  });
+  const DEBUG_AUDIO = false;
+  const dbg = $("audio-debug");
+  function updateDbg(tag){
+    if (!DEBUG_AUDIO || !dbg) return;
+    const state = audio.error ? ("错误码:" + audio.error.code)
+      : audio.paused ? "已暂停"
+      : audio.muted ? "静音播放中"
+      : "正在播放";
+    dbg.textContent = "[排障] 音源" + (srcIdx + 1) + "/" + MUSIC_SOURCES.length + " · " + state
+      + (audio.error ? "" : " · " + Math.round(audio.currentTime) + "s")
+      + (tag ? " · " + tag : "");
+  }
+  setInterval(updateDbg, 500);
+  let retryCount = 0;
+  function resetChain(){
+    if (retryCount >= 3) return;
+    retryCount++;
+    srcIdx = 0;
+    delete audio.dataset.errored;
+    audio.src = MUSIC_SOURCES[0];
+    attempt();
+  }
+  const kick = () => {
+    if (userPaused) return;
+    if (audio.dataset.errored){ resetChain(); }
+    else if (audio.paused){ attempt(); }
+    else if (audio.muted){ audio.muted = false; refreshIcon(); }
+    removeEventListener("pointerdown", kick);
+    removeEventListener("keydown", kick);
+  };
+  addEventListener("pointerdown", kick);
+  addEventListener("keydown", kick);
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (audio.paused){
+      userPaused = false;
+      audio.muted = false;
+      audio.play().then(refreshIcon).catch(() => showToast("音乐加载失败，检查 mp3 文件"));
+    } else {
+      userPaused = true;
+      audio.pause();
+      refreshIcon();
+    }
+  });
+  player.addEventListener("click", () => btn.click());
+  audio.addEventListener("play", refreshIcon);
+  audio.addEventListener("pause", refreshIcon);
+  const origStart = startDemo;
+  startDemo = async function(){ attempt(); return origStart.apply(this, arguments); };
+  window.wxMusic = {
+    play(){ userPaused = false; audio.muted = false; audio.play().then(refreshIcon).catch(() => {}); },
+    skip(){ userPaused = true; refreshIcon(); }
+  };
+  attempt();
+})();
+(function(){
+  const c = document.getElementById("bg-canvas");
+  if (!c) return;
+  const ctx = c.getContext("2d");
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let W, H, DPR, cx, cy, scale;
+  const mouse = { x: -9999, y: -9999 };
+  const N = 160;
+  const SPEED = .0045;
+  const stars = [];
+  function spawn(s, anywhere){
+    s.x = Math.random() * 2 - 1;
+    s.y = Math.random() * 2 - 1;
+    s.z = anywhere ? .1 + Math.random() * .9 : 1;
+    s.pz = s.z;
+    s.white = Math.random() < .18;
+    s.hue = Math.random() < .55 ? 22 + Math.random() * 22 : 78 + Math.random() * 42;
+  }
+  function resize(){
+    DPR = Math.min(devicePixelRatio || 1, 2);
+    W = innerWidth; H = innerHeight;
+    c.width = W * DPR; c.height = H * DPR;
+    c.style.width = W + "px"; c.style.height = H + "px";
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    cx = W / 2; cy = H / 2;
+    scale = Math.max(W, H) * .5;
+  }
+  for (let i = 0; i < N; i++){ const s = {}; spawn(s, true); stars.push(s); }
+  addEventListener("mousemove", e => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+  addEventListener("touchmove", e => { const t = e.touches[0]; if (t){ mouse.x = t.clientX; mouse.y = t.clientY; } }, { passive: true });
+  addEventListener("mouseleave", () => { mouse.x = -9999; mouse.y = -9999; });
+  addEventListener("resize", resize);
+  resize();
+  const gradCache = {};
+  function glow(r, h, s, a){
+    const key = r.toFixed(0) + "|" + h + "|" + s + "|" + a.toFixed(2);
+    let g = gradCache[key];
+    if (!g){
+      const l1 = s === 0 ? "94%" : "82%";
+      const l2 = s === 0 ? "86%" : "68%";
+      g = ctx.createRadialGradient(0, 0, 0, 0, 0, r);
+      g.addColorStop(0,   "hsla(" + h + "," + s + "%," + l1 + "," + a.toFixed(3) + ")");
+      g.addColorStop(.45, "hsla(" + h + "," + s + "%," + l2 + "," + (a * .4).toFixed(3) + ")");
+      g.addColorStop(1,   "hsla(" + h + "," + s + "%,60%,0)");
+      gradCache[key] = g;
+    }
+    return g;
+  }
+  function frame(){
+    ctx.clearRect(0, 0, W, H);
+    const vx = cx + (mouse.x > -999 ? (mouse.x - cx) * .06 : 0);
+    const vy = cy + (mouse.y > -999 ? (mouse.y - cy) * .06 : 0);
+    ctx.lineCap = "round";
+    for (const p of stars){
+      p.pz = p.z;
+      p.z -= SPEED * (1.15 - p.z);
+      if (p.z <= .03){ spawn(p, false); continue; }
+      const sx = vx + (p.x / p.z) * scale * .5;
+      const sy = vy + (p.y / p.z) * scale * .5;
+      const px = vx + (p.x / p.pz) * scale * .5;
+      const py = vy + (p.y / p.pz) * scale * .5;
+      if ((sx < -80 || sx > W + 80 || sy < -80 || sy > H + 80) && p.z < .3){ spawn(p, false); continue; }
+      const depth = 1 - p.z;
+      const size = .6 + depth * 3.6;
+      const alpha = Math.min(.95, .12 + depth * .85);
+      const h = p.white ? 0 : p.hue;
+      const s = p.white ? 0 : 85;
+      ctx.strokeStyle = "hsla(" + h + "," + s + "%," + (p.white ? "88%" : "72%") + "," + (alpha * .55).toFixed(3) + ")";
+      ctx.lineWidth = size;
+      ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(sx, sy); ctx.stroke();
+      if (size > 1.6){
+        ctx.save();
+        ctx.translate(sx, sy);
+        ctx.fillStyle = glow(size * 3.4, h, s, Math.min(alpha, .8));
+        ctx.beginPath(); ctx.arc(0, 0, size * 3.4, 0, Math.PI * 2); ctx.fill();
+        ctx.restore();
+        ctx.fillStyle = "hsla(" + h + "," + s + "%," + (p.white ? "94%" : "86%") + "," + alpha.toFixed(3) + ")";
+        ctx.beginPath(); ctx.arc(sx, sy, size * .7, 0, Math.PI * 2); ctx.fill();
+      } else {
+        ctx.fillStyle = "hsla(" + h + "," + s + "%," + (p.white ? "90%" : "80%") + "," + alpha.toFixed(3) + ")";
+        ctx.beginPath(); ctx.arc(sx, sy, Math.max(size * .6, .4), 0, Math.PI * 2); ctx.fill();
+      }
+    }
+  }
+  if (reduced){ frame(); } else { (function loop(){ frame(); requestAnimationFrame(loop); })(); }
+})();
+</script>
+</body>
+</html>
