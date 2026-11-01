@@ -444,6 +444,85 @@ body.intro-lock{overflow:hidden}
 .fb-mail b{color:#e7d8c2;font-weight:600}
 body.no-notice .notice-bar{display:none}
 body.no-notice main{padding-top:4rem}
+/* ==================== 🎃 万圣节突脸元素 v2 ==================== */
+#scare-stage{position:fixed;inset:0;z-index:99999;display:none;pointer-events:none;background:#000;overflow:hidden}
+#scare-stage.on{display:block;pointer-events:auto}
+#scare-stage.flash{animation:scareFlash .55s steps(2) infinite}
+@keyframes scareFlash{0%{background:#000}50%{background:#5c0707}100%{background:#000}}
+.scare-face{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  transform:scale(.25);opacity:0;will-change:transform,opacity,filter}
+.scare-face.strike{animation:faceStrike 1.15s cubic-bezier(.15,1.4,.4,1) forwards}
+@keyframes faceStrike{
+  0%{transform:scale(.25) rotate(-12deg);opacity:0;filter:blur(22px) brightness(.4)}
+  38%{transform:scale(1.14) rotate(2deg);opacity:1;filter:blur(0) brightness(1.25)}
+  46%{transform:scale(1.06) rotate(-2deg) translate(-8px,4px)}
+  54%{transform:scale(1.2) rotate(3deg) translate(9px,-5px);filter:blur(0) brightness(1.5)}
+  62%{transform:scale(1.1) rotate(-3deg) translate(-10px,-4px)}
+  70%{transform:scale(1.22) rotate(2deg) translate(7px,6px);filter:blur(0) brightness(1.35)}
+  100%{transform:scale(1.32) rotate(0);opacity:1;filter:blur(.4px) brightness(1.1)}
+}
+.scare-face svg{width:min(130vw,130vh);height:auto;max-width:1900px;
+  filter:drop-shadow(0 0 60px rgba(255,0,0,.75)) drop-shadow(0 0 140px rgba(180,0,0,.5))}
+.scare-eye{position:absolute;border-radius:50%;background:radial-gradient(circle,#fff 0 35%,#ff2d2d 55%,#7a0000 75%,transparent 78%);
+  box-shadow:0 0 26px #ff1e1e,0 0 70px rgba(255,0,0,.7);animation:eyeBlink 2.6s ease-in-out infinite;will-change:transform}
+@keyframes eyeBlink{0%,92%,100%{transform:scaleY(1)}96%{transform:scaleY(.06)}}
+#scare-stage.on .scare-face svg{animation:scareRot .18s steps(2) infinite}
+@keyframes scareRot{0%{transform:rotate(-1.1deg) translate(-4px,2px)}100%{transform:rotate(1.1deg) translate(4px,-2px)}}
+.scare-blood{position:absolute;top:0;left:0;right:0;height:38vh;pointer-events:none;
+  background:linear-gradient(180deg,rgba(120,0,0,.85),rgba(90,0,0,.5) 45%,transparent);
+  -webkit-mask-image:radial-gradient(120% 100% at 50% 0,#000 50%,transparent 88%);
+  mask-image:radial-gradient(120% 100% at 50% 0,#000 50%,transparent 88%);opacity:0;animation:bloodIn .6s ease forwards}
+@keyframes bloodIn{to{opacity:1}}
+.scare-tip{position:absolute;left:0;right:0;bottom:1.6rem;text-align:center;color:#ffd9a0;font-size:.78rem;
+  letter-spacing:.28em;font-weight:700;text-shadow:0 0 18px rgba(255,60,0,.9);opacity:0;animation:tipIn .5s .6s ease forwards}
+@keyframes tipIn{to{opacity:.9}}
+.scare-msg{position:absolute;left:0;right:0;top:8vh;text-align:center;padding:0 1rem;pointer-events:none}
+.scare-msg b{display:block;font-size:clamp(1.4rem,6vw,3rem);font-weight:900;letter-spacing:.06em;
+  background:linear-gradient(90deg,#ff6b00,#ffd166,#ff3b3b,#a3e635,#ff6b00);background-size:300% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:gradMove 2.4s linear infinite;
+  filter:drop-shadow(0 0 18px rgba(255,60,0,.85));opacity:0;transform:translateY(-14px) scale(.9)}
+.scare-msg b.on{animation:gradMove 2.4s linear infinite,msgIn .55s cubic-bezier(.22,1.4,.36,1) forwards}
+@keyframes msgIn{to{opacity:1;transform:none}}
+.scare-msg i{display:block;margin-top:.6rem;font-style:normal;font-size:clamp(.7rem,2.6vw,.92rem);color:#ffd9a0;letter-spacing:.22em;opacity:0;transition:opacity .5s .25s}
+.scare-msg i.on{opacity:.92}
+/* 常驻的南瓜突脸条 */
+#sneak-pumpkin{position:fixed;z-index:12000;left:50%;bottom:-14rem;width:min(78vw,26rem);transform:translateX(-50%);
+  pointer-events:none;opacity:0;transition:opacity .25s;filter:drop-shadow(0 0 40px rgba(255,80,0,.75))}
+#sneak-pumpkin.up{opacity:1;animation:sneakUp 1.5s cubic-bezier(.15,1.3,.4,1) forwards}
+@keyframes sneakUp{0%{bottom:-14rem;transform:translateX(-50%) scale(.7) rotate(-8deg)}
+  70%{bottom:18%;transform:translateX(-50%) scale(1.16) rotate(3deg)}
+  85%{bottom:22%;transform:translateX(-50%) scale(1.05) rotate(-2deg)}
+  100%{bottom:20%;transform:translateX(-50%) scale(1.1) rotate(0)}}
+#sneak-pumpkin.gone{animation:none;opacity:0;bottom:-14rem}
+.sk-eye{animation:eyeBlink 1.9s ease-in-out infinite;transform-origin:center}
+/* 突脸按钮 */
+#scare-btn{position:fixed;right:1.25rem;bottom:5.6rem;z-index:1300;display:flex;align-items:center;gap:.45rem;
+  padding:.55rem 1rem .55rem .7rem;border-radius:9999px;font-size:.78rem;font-weight:800;color:#170b00;
+  background:linear-gradient(135deg,#fdba74,#f97316);border:1px solid rgba(255,255,255,.35);
+  box-shadow:0 10px 30px rgba(249,115,22,.45);animation:scareBtnPulse 2.6s ease-in-out infinite;transition:transform .15s}
+#scare-btn:hover{transform:scale(1.06)}
+#scare-btn:active{transform:scale(.94)}
+#scare-btn svg{width:1rem;height:1rem}
+@keyframes scareBtnPulse{0%,100%{box-shadow:0 10px 30px rgba(249,115,22,.35),0 0 0 0 rgba(249,115,22,.4)}
+  50%{box-shadow:0 10px 36px rgba(249,115,22,.6),0 0 0 10px rgba(249,115,22,0)}}
+/* 万圣节快乐横幅 */
+#hwx-banner{position:fixed;left:0;right:0;top:0;z-index:11050;display:flex;justify-content:center;pointer-events:none;
+  transform:translateY(-110%);transition:transform .6s cubic-bezier(.22,1,.36,1)}
+#hwx-banner.show{transform:translateY(0)}
+#hwx-banner .inner{pointer-events:auto;margin-top:6.6rem;display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;justify-content:center;
+  padding:.7rem 1.3rem;border-radius:9999px;background:rgba(26,16,6,.92);border:1px solid rgba(249,115,22,.55);
+  box-shadow:0 16px 40px rgba(0,0,0,.6),0 0 40px rgba(249,115,22,.22);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+#hwx-banner .inner b{font-size:clamp(.72rem,2.4vw,.86rem);color:#ffd9a0;letter-spacing:.14em}
+#hwx-banner .inner b em{font-style:normal;color:#a3e635}
+#hwx-banner .inner button{font-size:.72rem;font-weight:800;color:#170b00;background:linear-gradient(135deg,#fdba74,#f97316);
+  padding:.35rem .8rem;border-radius:9999px}
+#hwx-banner .inner button:active{transform:scale(.94)}
+#sneak-pumpkin svg{width:100%;height:auto;display:block}
+@media (prefers-reduced-motion:reduce){
+  #scare-stage,#scare-stage.flash,.scare-face.strike,#sneak-pumpkin.up,
+  #scare-stage.on .scare-face svg,.sk-eye,.scare-eye{animation:none!important}
+  .scare-face{transform:scale(1.1);opacity:1}
+}
 </style>
 </head>
 <body>
@@ -482,6 +561,67 @@ body.no-notice main{padding-top:4rem}
     <svg id="music-icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="5" y="4" width="4.5" height="16" rx="1"/><rect x="14.5" y="4" width="4.5" height="16" rx="1"/></svg>
   </button>
 </div>
+
+<!-- ==================== 🎃 万圣节突脸 DOM ==================== -->
+<div id="hwx-banner">
+  <div class="inner">
+    <b>🎃 HAPPY HALLOWEEN · 祝各位万圣节快乐 <em>👻</em></b>
+    <button id="hwx-go" type="button">让我也吓一下 →</button>
+  </div>
+</div>
+
+<button id="scare-btn" type="button" aria-label="突脸吓一下">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a9 9 0 0 0-9 9v3.2c0 1 .7 1.9 1.7 2.1l1.9.4-.5 2.6a1.1 1.1 0 0 0 1.9.9L9.6 18c.8.2 1.6.3 2.4.3s1.6-.1 2.4-.3l1.6 2.2a1.1 1.1 0 0 0 1.9-.9l-.5-2.6 1.9-.4c1-.2 1.7-1.1 1.7-2.1V11a9 9 0 0 0-9-9Zm-3.4 8.6 2 1.9-2 1.9v-3.8Zm6.8 0v3.8l-2-1.9 2-1.9Z"/></svg>
+  <span>突脸·吓一下</span>
+</button>
+
+<div id="scare-stage" role="alertdialog" aria-live="assertive" aria-label="万圣节突脸">
+  <div class="scare-blood"></div>
+  <div class="scare-face" id="scare-face"></div>
+  <div class="scare-msg">
+    <b id="scare-title">🎃 HAPPY HALLOWEEN</b>
+    <i id="scare-sub">祝各位万圣节快乐 · WX HUB</i>
+  </div>
+  <div class="scare-tip">点任意位置关闭 · 别怕，只是特效 👻</div>
+</div>
+
+<div id="sneak-pumpkin" aria-hidden="true">
+  <svg viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="pkBody" cx="45%" cy="35%" r="75%">
+        <stop offset="0%" stop-color="#ffb14e"/>
+        <stop offset="55%" stop-color="#f97316"/>
+        <stop offset="100%" stop-color="#a8410a"/>
+      </radialGradient>
+      <radialGradient id="skEye" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#fff3b0"/>
+        <stop offset="45%" stop-color="#fde047"/>
+        <stop offset="100%" stop-color="#b45309"/>
+      </radialGradient>
+      <radialGradient id="pkGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#ff6b00" stop-opacity=".55"/>
+        <stop offset="100%" stop-color="#ff6b00" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <ellipse cx="150" cy="150" rx="150" ry="120" fill="url(#pkGlow)"/>
+    <path d="M150 74c-6-16 2-30 14-36-4 12 2 22 10 26-8-16 4-30 16-32-2 14 6 24 12 32 6-8 14-18 12-32 12 2 24 16 16 32 8-4 14-14 10-26 12 6 20 20 14 36h-104z" fill="#3f6212"/>
+    <ellipse cx="150" cy="160" rx="112" ry="88" fill="url(#pkBody)"/>
+    <ellipse cx="150" cy="160" rx="112" ry="88" fill="none" stroke="#7c2d12" stroke-opacity=".35" stroke-width="3"/>
+    <path d="M92 104c-14 22-14 66 0 96" fill="none" stroke="#7c2d12" stroke-opacity=".3" stroke-width="4"/>
+    <path d="M208 104c14 22 14 66 0 96" fill="none" stroke="#7c2d12" stroke-opacity=".3" stroke-width="4"/>
+    <path d="M150 82c-10 26-10 128 0 156" fill="none" stroke="#7c2d12" stroke-opacity=".22" stroke-width="4"/>
+    <path d="M104 132l22 8-20 16z" fill="#1c0a00"/>
+    <path d="M196 132l-22 8 20 16z" fill="#1c0a00"/>
+    <ellipse class="sk-eye" cx="112" cy="140" rx="8" ry="7" fill="url(#skEye)"/>
+    <ellipse class="sk-eye" cx="188" cy="140" rx="8" ry="7" fill="url(#skEye)"/>
+    <path d="M120 150l30 12-30 12 14-12z" fill="#1c0a00"/>
+    <path d="M180 150l-30 12 30 12-14-12z" fill="#1c0a00"/>
+    <path d="M108 186c14-14 70-14 84 0-6 30-22 44-42 44s-36-14-42-44z" fill="#1c0a00"/>
+    <path d="M120 188h10l-5 14zM140 188h10l-5 16zM160 188h10l-5 14zM178 188h8l-4 12z" fill="#fde047" opacity=".9"/>
+  </svg>
+</div>
+<audio id="scare-sound" preload="auto"></audio>
+
 <div class="bg-glow" aria-hidden="true">
   <div class="blob blob-1"></div>
   <div class="blob blob-2"></div>
@@ -1560,6 +1700,370 @@ $("intro-skip").addEventListener("click", () => { introSkip = true; });
     }
   }
   if (reduced){ frame(); } else { (function loop(){ frame(); requestAnimationFrame(loop); })(); }
+})();
+</script>
+
+<!-- ==================== 🎃 万圣节突脸行为层 ==================== -->
+<script>
+(function(){
+  "use strict";
+  var stage   = document.getElementById("scare-stage");
+  var faceBox = document.getElementById("scare-face");
+  var titleEl = document.getElementById("scare-title");
+  var subEl   = document.getElementById("scare-sub");
+  var btn     = document.getElementById("scare-btn");
+  var pumpkin = document.getElementById("sneak-pumpkin");
+  var banner  = document.getElementById("hwx-banner");
+  var bannerGo= document.getElementById("hwx-go");
+  var sound   = document.getElementById("scare-sound");
+  if (!stage || !faceBox) return;
+
+  var reduced = false;
+  try { reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e){}
+
+  /* ---------- 1. 内联恐怖脸 SVG ---------- */
+  var FACE =
+    '<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">' +
+      '<defs>' +
+        '<radialGradient id="sfSkin" cx="50%" cy="38%" r="70%">' +
+          '<stop offset="0%" stop-color="#efe7d8"/>' +
+          '<stop offset="55%" stop-color="#b9a894"/>' +
+          '<stop offset="100%" stop-color="#4a4038"/>' +
+        '</radialGradient>' +
+        '<radialGradient id="sfHole" cx="50%" cy="45%" r="60%">' +
+          '<stop offset="0%" stop-color="#000"/>' +
+          '<stop offset="70%" stop-color="#120404"/>' +
+          '<stop offset="100%" stop-color="#4a0505"/>' +
+        '</radialGradient>' +
+        '<linearGradient id="sfTeeth" x1="0" y1="0" x2="0" y2="1">' +
+          '<stop offset="0%" stop-color="#fffdf6"/>' +
+          '<stop offset="100%" stop-color="#c9bda6"/>' +
+        '</linearGradient>' +
+      '</defs>' +
+      /* 头骨轮廓 */
+      '<path d="M500 60c-185 0-300 130-300 300 0 110 34 176 78 232 26 34 42 60 46 100l352 0c4-40 20-66 46-100 44-56 78-122 78-232 0-170-115-300-300-300z" fill="url(#sfSkin)"/>' +
+      /* 颅骨裂纹 */
+      '<g stroke="#2b2320" stroke-opacity=".55" fill="none" stroke-width="6" stroke-linecap="round">' +
+        '<path d="M430 96c14 44-10 70-2 104-8 30-30 44-26 76"/>' +
+        '<path d="M600 110c-16 40 6 62-4 96 10 28 28 40 24 70"/>' +
+        '<path d="M520 150c8 34-6 56 2 88"/>' +
+      '</g>' +
+      /* 眼窝 */
+      '<ellipse cx="372" cy="392" rx="118" ry="132" fill="url(#sfHole)"/>' +
+      '<ellipse cx="628" cy="392" rx="118" ry="132" fill="url(#sfHole)"/>' +
+      /* 眼内红光 */
+      '<ellipse cx="372" cy="398" rx="40" ry="44" fill="#ff2b2b" opacity=".85"/>' +
+      '<ellipse cx="628" cy="398" rx="40" ry="44" fill="#ff2b2b" opacity=".85"/>' +
+      '<ellipse cx="372" cy="398" rx="16" ry="18" fill="#fff6c9"/>' +
+      '<ellipse cx="628" cy="398" rx="16" ry="18" fill="#fff6c9"/>' +
+      /* 鼻腔 */
+      '<path d="M500 470c-26 0-42 26-42 62 0 34 20 54 42 54s42-20 42-54c0-36-16-62-42-62z" fill="url(#sfHole)"/>' +
+      /* 撕裂大笑口 */
+      '<path d="M236 640c58 96 158 152 264 152s206-56 264-152c-84 44-176 62-264 62s-180-18-264-62z" fill="url(#sfHole)"/>' +
+      /* 上下牙 */
+      '<g fill="url(#sfTeeth)" stroke="#7d7263" stroke-width="4">' +
+        '<path d="M280 664l36 0 0 52-30-6z"/>' +
+        '<path d="M330 676l38 0 0 56-32-4z"/>' +
+        '<path d="M382 686l38 0 0 58-34-2z"/>' +
+        '<path d="M436 692l40 0 0 60-36 0z"/>' +
+        '<path d="M490 694l40 0 0 60-38 0z"/>' +
+        '<path d="M544 692l40 0 0 60-38-1z"/>' +
+        '<path d="M598 686l38 0 0 58-34 1z"/>' +
+        '<path d="M650 676l38 0 0 56-32 3z"/>' +
+        '<path d="M700 664l36 0 0 52-30 5z"/>' +
+        '<path d="M300 760l34-24 0 30-26 6z"/>' +
+        '<path d="M350 762l36-18 0 32-28 4z"/>' +
+        '<path d="M404 766l36-14 0 34-28 2z"/>' +
+        '<path d="M458 768l36-10 0 34-30 0z"/>' +
+        '<path d="M510 768l36 0 0 34-30-2z"/>' +
+        '<path d="M562 768l36 10 0 30-30 2z"/>' +
+        '<path d="M614 764l36 14 0 28-28-2z"/>' +
+        '<path d="M666 760l36 18 0 26-28-4z"/>' +
+      '</g>' +
+      /* 嘴角血迹 */
+      '<g fill="#8b0000" opacity=".9">' +
+        '<path d="M262 700c-6 40 6 74 22 104-4-38 2-70 10-98z"/>' +
+        '<path d="M738 700c6 40-6 74-22 104 4-38-2-70-10-98z"/>' +
+        '<path d="M470 800c0 40-10 70-30 96 26-14 44-44 52-88z"/>' +
+      '</g>' +
+    '</svg>';
+
+  faceBox.innerHTML = FACE;
+
+  /* ---------- 2. 祝福文案 ---------- */
+  var TEASERS = [
+    { t: "🎃 HAPPY HALLOWEEN", s: "祝各位万圣节快乐 · WX HUB 全体送你一口好牙 😁" },
+    { t: "👻 捣蛋还是招待？", s: "万圣节快乐！南瓜灯已为你点亮，卡密永久有效 🕯️" },
+    { t: "🍬 不给糖就突脸", s: "祝各位万圣节快乐 · 愿你的服务器永远不掉线 ⚡" },
+    { t: "🕸️ 万圣夜快乐", s: "80 个服务器陪你过夜 · 别怕，只是特效 👻" },
+    { t: "💀 惊不惊喜", s: "万圣节快乐！永久卡 · 三设备 · 一卡到底 🎃" },
+    { t: "🔮 万圣节快乐！", s: "胆子大的人才能看到这行字 · 祝你今晚好梦 🌙" }
+  ];
+
+  /* ---------- 3. WebAudio 合成尖叫 ---------- */
+  var actx = null, audioOn = false;
+  function ensureCtx(){
+    if (actx) return actx;
+    try {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return null;
+      actx = new AC();
+    } catch(e){ actx = null; }
+    return actx;
+  }
+  // 只在用户点过音乐"是"或者点过突脸按钮后播放声音
+  function strictAudioWanted(){
+    try { return audioOn || (document.getElementById("bg-music") && !document.getElementById("bg-music").paused); }
+    catch(e){ return false; }
+  }
+
+  function scream(){
+    if (!strictAudioWanted()) return;
+    var ac = ensureCtx();
+    if (!ac) return;
+    try { if (ac.state === "suspended") ac.resume(); } catch(e){}
+    var now = ac.currentTime;
+
+    // 主尖叫：锯齿波急速下滑 + 颤音
+    var osc = ac.createOscillator(), og = ac.createGain();
+    osc.type = "sawtooth";
+    osc.frequency.setValueAtTime(1400, now);
+    osc.frequency.exponentialRampToValueAtTime(320, now + .85);
+    var vib = ac.createOscillator(), vg = ac.createGain();
+    vib.type = "sine"; vib.frequency.value = 26; vg.gain.value = 90;
+    vib.connect(vg); vg.connect(osc.frequency);
+    og.gain.setValueAtTime(.0001, now);
+    og.gain.exponentialRampToValueAtTime(.42, now + .05);
+    og.gain.exponentialRampToValueAtTime(.0001, now + 1.05);
+    osc.connect(og); og.connect(ac.destination);
+    osc.start(now); vib.start(now);
+    osc.stop(now + 1.1); vib.stop(now + 1.1);
+
+    // 第二层：方波高频刺耳层
+    var o2 = ac.createOscillator(), g2 = ac.createGain();
+    o2.type = "square";
+    o2.frequency.setValueAtTime(2100, now);
+    o2.frequency.exponentialRampToValueAtTime(700, now + .9);
+    g2.gain.setValueAtTime(.0001, now);
+    g2.gain.exponentialRampToValueAtTime(.12, now + .04);
+    g2.gain.exponentialRampToValueAtTime(.0001, now + .9);
+    o2.connect(g2); g2.connect(ac.destination);
+    o2.start(now); o2.stop(now + .95);
+
+    // 低频 sub 撞击
+    var o3 = ac.createOscillator(), g3 = ac.createGain();
+    o3.type = "sine";
+    o3.frequency.setValueAtTime(120, now);
+    o3.frequency.exponentialRampToValueAtTime(38, now + .5);
+    g3.gain.setValueAtTime(.55, now);
+    g3.gain.exponentialRampToValueAtTime(.0001, now + .7);
+    o3.connect(g3); g3.connect(ac.destination);
+    o3.start(now); o3.stop(now + .75);
+
+    // 噪声刮擦
+    try {
+      var dur = 1.0, sr = ac.sampleRate, buf = ac.createBuffer(1, sr * dur, sr);
+      var d = buf.getChannelData(0);
+      for (var i = 0; i < d.length; i++){
+        d[i] = (Math.random() * 2 - 1) * (1 - i / d.length) * .7;
+      }
+      var src = ac.createBufferSource(); src.buffer = buf;
+      var bp = ac.createBiquadFilter(); bp.type = "bandpass";
+      bp.frequency.setValueAtTime(2600, now);
+      bp.frequency.exponentialRampToValueAtTime(900, now + dur);
+      bp.Q.value = .8;
+      var ng = ac.createGain();
+      ng.gain.setValueAtTime(.22, now);
+      ng.gain.exponentialRampToValueAtTime(.0001, now + dur);
+      src.connect(bp); bp.connect(ng); ng.connect(ac.destination);
+      src.start(now);
+    } catch(e){}
+  }
+
+  /* ---------- 4. 突脸主流程 ---------- */
+  var busy = false, closeTimer = null, killOn = false;
+  var tipEl = stage.querySelector(".scare-tip");
+  var bloodEl = stage.querySelector(".scare-blood");
+  var timerKill = null;
+
+  function pickTeaser(){
+    var i = Math.floor(Math.random() * TEASERS.length);
+    return TEASERS[i];
+  }
+
+  function scare(opt){
+    if (busy) return;
+    busy = true;
+    opt = opt || {};
+    var item = opt.text ? { t: opt.text, s: opt.sub || "" } : pickTeaser();
+
+    // 重置
+    titleEl.textContent = item.t;
+    subEl.textContent = item.s || "";
+    titleEl.classList.remove("on");
+    subEl.classList.remove("on");
+    faceBox.classList.remove("strike");
+    stage.classList.remove("on", "flash");
+    void stage.offsetWidth;
+
+    // 重现血幕动画
+    if (bloodEl){
+      bloodEl.style.animation = "none";
+      void bloodEl.offsetWidth;
+      bloodEl.style.animation = "";
+    }
+    if (tipEl){ tipEl.style.animation = "none"; void tipEl.offsetWidth; tipEl.style.animation = ""; }
+
+    stage.classList.add("on");
+    stage.classList.add("flash");
+    faceBox.classList.add("strike");
+    scream();
+    try { if (navigator.vibrate) navigator.vibrate([60, 40, 120, 40, 80]); } catch(e){}
+
+    setTimeout(function(){
+      titleEl.classList.add("on");
+      subEl.classList.add("on");
+    }, 220);
+
+    // 关闭：点任意处 / 3.4 秒后自动
+    var close = function(){
+      if (!busy) return;
+      busy = false;
+      stage.classList.remove("on", "flash");
+      faceBox.classList.remove("strike");
+      titleEl.classList.remove("on");
+      subEl.classList.remove("on");
+      if (closeTimer){ clearTimeout(closeTimer); closeTimer = null; }
+      if (timerKill){ clearTimeout(timerKill); timerKill = null; }
+      stage.removeEventListener("click", close);
+      stage.removeEventListener("touchstart", close);
+      if (!opt.silent) sneakSpeak(opt.greet || "🎃 万圣节快乐！卡密永久 · 一卡到底");
+    };
+
+    stage.addEventListener("click", close);
+    stage.addEventListener("touchstart", close, { passive: true });
+
+    timerKill = setTimeout(function(){ close(); }, 3600);
+    // 降级保护：即使动画被禁用，也一定在 5 秒内关闭
+    if (reduced) setTimeout(close, 3000);
+  }
+
+  /* ---------- 5. 南瓜偷看 ---------- */
+  var sneakTimer = null, sneakSpeakTimer = null;
+  function sneakSpeak(msg){
+    var old = document.getElementById("hwx-note");
+    if (old) old.remove();
+    var d = document.createElement("div");
+    d.id = "hwx-note";
+    d.textContent = msg;
+    d.style.cssText = "position:fixed;left:50%;transform:translateX(-50%);bottom:2.2rem;z-index:12010;" +
+      "padding:.55rem 1.1rem;border-radius:9999px;font-size:.76rem;font-weight:800;letter-spacing:.06em;" +
+      "color:#170b00;background:linear-gradient(135deg,#fdba74,#f97316);" +
+      "box-shadow:0 12px 32px rgba(249,115,22,.45);white-space:nowrap;max-width:90vw;" +
+      "overflow:hidden;text-overflow:ellipsis;transition:opacity .4s,transform .4s;opacity:0;transform:translate(-50%,14px)";
+    document.body.appendChild(d);
+    requestAnimationFrame(function(){ d.style.opacity = "1"; d.style.transform = "translate(-50%,0)"; });
+    setTimeout(function(){
+      d.style.opacity = "0"; d.style.transform = "translate(-50%,14px)";
+      setTimeout(function(){ d.remove(); }, 420);
+    }, 2400);
+  }
+
+  function peekPumpkin(){
+    if (!pumpkin) return;
+    pumpkin.classList.remove("up", "gone");
+    void pumpkin.offsetWidth;
+    pumpkin.classList.add("up");
+    clearTimeout(sneakTimer);
+    sneakTimer = setTimeout(function(){
+      pumpkin.classList.remove("up");
+      pumpkin.classList.add("gone");
+    }, reduced ? 1600 : 2900);
+  }
+
+  /* ---------- 6. 万圣节横幅 ---------- */
+  var bannerTimer = null;
+  function showBanner(ms){
+    if (!banner) return;
+    banner.classList.add("show");
+    if (bannerTimer) clearTimeout(bannerTimer);
+    if (ms) bannerTimer = setTimeout(hideBanner, ms);
+  }
+  function hideBanner(){
+    if (!banner) return;
+    banner.classList.remove("show");
+    if (bannerTimer){ clearTimeout(bannerTimer); bannerTimer = null; }
+  }
+
+  /* ---------- 7. 事件绑定 ---------- */
+  if (btn){
+    btn.addEventListener("click", function(e){
+      e.preventDefault();
+      audioOn = true;
+      hideBanner();
+      scare();
+    });
+  }
+  if (bannerGo){
+    bannerGo.addEventListener("click", function(e){
+      e.preventDefault();
+      audioOn = true;
+      hideBanner();
+      scare();
+    });
+  }
+  // 用户主动开音乐 → 允许突脸音效
+  ["ask-yes", "music-toggle", "music-player"].forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) el.addEventListener("click", function(){ audioOn = true; });
+  });
+
+  /* ---------- 8. 对外 API ---------- */
+  window.halloweenScare = function(){ audioOn = true; scare(); };
+  window.halloweenGreet = function(msg){ audioOn = true; scare({ text: msg || "🎃 HAPPY HALLOWEEN", sub: "祝各位万圣节快乐 · WX HUB" }); };
+  window.halloweenPeek  = peekPumpkin;
+  window.halloweenBanner= showBanner;
+  window.__stopHalloweenLoop = function(){
+    clearInterval(boot.loopId);
+    clearTimeout(boot.t1); clearTimeout(boot.t2); clearTimeout(boot.t3);
+    hideBanner();
+  };
+
+  /* ---------- 9. 启动节奏 ---------- */
+  var boot = { loopId: null, t1: null, t2: null, t3: null };
+  function start(){
+    // 3 秒：南瓜先探头 + 祝福提示
+    boot.t1 = setTimeout(function(){
+      peekPumpkin();
+      sneakSpeak("🎃 万圣节快乐 · 往下滑看看，卡密永久有效");
+    }, 3000);
+
+    // 7 秒：顶部横幅「万圣节快乐」
+    boot.t2 = setTimeout(function(){ showBanner(9000); }, 7000);
+
+    // 12 秒：首次自动突脸（避开开场动画）
+    boot.t3 = setTimeout(function(){
+      if (!busy) scare({ silent: true });
+    }, 12000);
+
+    // 每 15 秒南瓜循环偷看
+    boot.loopId = setInterval(peekPumpkin, 15000);
+  }
+
+  if (document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", start, { once: true });
+  } else {
+    start();
+  }
+
+  // ESC 关闭突脸
+  document.addEventListener("keydown", function(e){
+    if (e.key === "Escape" && busy){
+      stage.classList.remove("on", "flash");
+      faceBox.classList.remove("strike");
+      busy = false;
+    }
+  });
 })();
 </script>
 </body>
